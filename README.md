@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Guía del Comprador Hispano — Landing Page
 
-## Getting Started
+Premium lead magnet landing page for A&J Real Estate Group.
+Deploys to `lm.ajrealestateva.com`.
 
-First, run the development server:
+## Quick Start
 
 ```bash
+npm install
+cp .env.example .env.local   # edit with your real channel ID
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `NEXT_PUBLIC_ITMANO_BASE_URL` | No | ITMANO base URL (default: https://app.itmano.com) |
+| `NEXT_PUBLIC_ITMANO_CHANNEL_ID` | **Yes** | Public channel ID from ITMANO → Sources |
 
-## Learn More
+### Getting Your Channel ID
+1. Log in to ITMANO → **Sources**
+2. Find or create the "Guía del Comprador Hispano" lead magnet channel
+3. Copy its `public_id` (format: `chn_xxxxx`)
+4. Paste into `NEXT_PUBLIC_ITMANO_CHANNEL_ID` in `.env.local`
 
-To learn more about Next.js, take a look at the following resources:
+Without a channel ID, intake.js won't load and the form will use the direct fetch fallback.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Replacing Content Placeholders
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Search the codebase for `REEMPLAZAR` to find all content the client must supply:
 
-## Deploy on Vercel
+| File | What to replace |
+|------|----------------|
+| `components/sections/AgentIntro.tsx` | Adriana's real bio, years of experience, families served |
+| `components/sections/Testimonials.tsx` | Real client testimonials (name, quote, location) |
+| `components/sections/Footer.tsx` | Real social media profile URLs |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Adding Real Images
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See `public/images/ASSETS.md` for dimensions and instructions.
+
+When testimonial photos and logo are ready:
+1. Drop files at the paths listed in `ASSETS.md`
+2. In `Testimonials.tsx`: uncomment the `<Image>` block, remove `<ImagePlaceholder>`
+3. In `Footer.tsx`: uncomment the `<Image>` block, remove `<ImagePlaceholder>`
+
+## Deploy to Vercel
+
+```bash
+# 1. Push to GitHub
+git push origin main
+
+# 2. Import project at vercel.com/new
+# 3. Set env vars in Vercel dashboard:
+#    NEXT_PUBLIC_ITMANO_BASE_URL = https://app.itmano.com
+#    NEXT_PUBLIC_ITMANO_CHANNEL_ID = chn_xxxxx
+
+# 4. Add custom domain: lm.ajrealestateva.com
+```
+
+Framework preset: Next.js (auto-detected). Build command: `npm run build`. Output: `.next`.
+
+## Scripts
+
+```bash
+npm run dev      # development server
+npm run build    # production build
+npm run lint     # ESLint
+npx tsc --noEmit # type check
+```
