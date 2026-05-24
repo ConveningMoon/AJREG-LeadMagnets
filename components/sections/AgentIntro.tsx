@@ -40,7 +40,7 @@ export function AgentIntro() {
 
             {/* REEMPLAZAR: cita con número real de familias atendidas */}
             <p className="font-body text-sm text-navy/50 italic border-l-2 border-gold pl-4">
-              "He tenido el honor de ayudar a [X] familias a encontrar su hogar en Hampton Roads."
+              &ldquo;He tenido el honor de ayudar a [X] familias a encontrar su hogar en Hampton Roads.&rdquo;
             </p>
           </div>
         </div>

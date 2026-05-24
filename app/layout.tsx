@@ -7,6 +7,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_ITMANO_BASE_URL ?? 'https://app.itmano.
 const CHANNEL_ID = process.env.NEXT_PUBLIC_ITMANO_CHANNEL_ID ?? ''
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://lm.ajrealestateva.com'),
   title: 'Guía del Comprador Hispano — A&J Real Estate Group',
   description:
     'Descarga gratis nuestra Guía del Comprador Hispano y descubre el proceso paso a paso ' +

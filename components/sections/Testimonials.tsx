@@ -50,7 +50,7 @@ export function Testimonials() {
               transition={pref ? {} : { duration: 0.4, ease: 'easeOut', delay: i * 0.1 }}
             >
               <blockquote className="font-body text-navy/70 leading-relaxed italic flex-1">
-                "{quote}"
+                &ldquo;{quote}&rdquo;
               </blockquote>
               <figcaption className="flex items-center gap-3 pt-3 border-t border-cream">
                 {/* REEMPLAZAR: cuando las fotos estén disponibles, sustituye ImagePlaceholder

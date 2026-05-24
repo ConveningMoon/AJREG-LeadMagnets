@@ -14,6 +14,12 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  // Ignore underscore-prefixed vars in destructuring (e.g. `{ a: _unused, ...rest }`)
+  {
+    rules: {
+      '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
+    },
+  },
   // Must be last — disables all ESLint rules that conflict with Prettier.
   prettierConfig,
 ]);
