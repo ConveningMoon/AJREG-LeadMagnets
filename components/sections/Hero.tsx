@@ -1,18 +1,18 @@
 'use client'
 import Image from 'next/image'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion, type Variants } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 
 function scrollToQuiz() {
   document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })
 }
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden:   {},
   visible:  { transition: { staggerChildren: 0.12 } },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden:   { opacity: 0, y: 24 },
   visible:  { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 }
@@ -27,27 +27,27 @@ export function Hero() {
 
           {/* ── Text column ── */}
           <motion.div
-            variants={pref ? {} : containerVariants}
-            initial={pref ? {} : 'hidden'}
-            animate={pref ? {} : 'visible'}
+            variants={pref ? undefined : containerVariants}
+            initial={pref ? false : 'hidden'}
+            animate={pref ? undefined : 'visible'}
             className="space-y-6"
           >
             <motion.p
-              variants={pref ? {} : itemVariants}
+              variants={pref ? undefined : itemVariants}
               className="font-body text-xs font-semibold tracking-[0.16em] uppercase text-gold"
             >
               Guía gratuita para compradores
             </motion.p>
 
             <motion.h1
-              variants={pref ? {} : itemVariants}
+              variants={pref ? undefined : itemVariants}
               className="font-heading text-4xl sm:text-5xl lg:text-[3.25rem] font-semibold text-navy leading-tight"
             >
               Compra tu próxima casa en Hampton Roads con total confianza
             </motion.h1>
 
             <motion.p
-              variants={pref ? {} : itemVariants}
+              variants={pref ? undefined : itemVariants}
               className="font-body text-lg text-navy/70 leading-relaxed max-w-lg"
             >
               Descarga gratis nuestra Guía del Comprador Hispano y descubre el proceso
@@ -56,7 +56,7 @@ export function Hero() {
             </motion.p>
 
             <motion.div
-              variants={pref ? {} : itemVariants}
+              variants={pref ? undefined : itemVariants}
               className="flex flex-col sm:flex-row gap-4 items-start sm:items-center"
             >
               <Button onClick={scrollToQuiz} variant="primary">
@@ -71,8 +71,8 @@ export function Hero() {
           {/* ── Guide cover image column ── */}
           <motion.div
             className="flex justify-center lg:justify-end"
-            animate={pref ? {} : { y: [0, -8, 0] }}
-            transition={pref ? {} : { duration: 3.5, ease: 'easeInOut', repeat: Infinity }}
+            animate={pref ? undefined : { y: [0, -8, 0] }}
+            transition={pref ? undefined : { duration: 3.5, ease: 'easeInOut', repeat: Infinity }}
           >
             <Image
               src="/images/guide-cover.webp"
