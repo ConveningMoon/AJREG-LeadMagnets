@@ -41,5 +41,16 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local claude tool permissions (machine-specific, not for version control)
-.claude/settings.local.json
+# Claude Code tool — settings and planning artifacts (machine-specific)
+.claude/
+docs/superpowers/
+
+# Reference files used during development (not for production)
+public/LM_Example.html
+
+# Next.js default template assets (not used in this project)
+public/file.svg
+public/globe.svg
+public/next.svg
+public/vercel.svg
+public/window.svg

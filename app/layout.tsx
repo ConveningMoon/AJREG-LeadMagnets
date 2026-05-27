@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { garamond, montserrat } from '@/lib/fonts'
+import { montserrat, ebGaramond } from '@/lib/fonts'
 import './globals.css'
 
 const BASE_URL = process.env.NEXT_PUBLIC_ITMANO_BASE_URL ?? 'https://app.itmano.com'
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${garamond.variable} ${montserrat.variable}`}>
+    <html lang="es" className={`${montserrat.variable} ${ebGaramond.variable}`}>
       <body className="font-body bg-base text-navy antialiased">
         {children}
         {CHANNEL_ID && (

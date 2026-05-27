@@ -21,7 +21,7 @@ export function AgentIntro() {
           {/* Bio */}
           <div className="space-y-3 max-w-xl">
             <div>
-              <h2 className="font-heading text-2xl font-semibold text-navy">
+              <h2 className="font-heading text-2xl font-bold text-navy">
                 Adriana Melendez
               </h2>
               <p className="font-body text-sm font-semibold text-gold tracking-wide mt-0.5">

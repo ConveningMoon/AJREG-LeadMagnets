@@ -11,8 +11,9 @@ interface QuizContactFormProps {
 }
 
 const inputCls =
-  'w-full px-4 py-3 rounded-md border-2 border-cream bg-white font-body text-navy text-base ' +
-  'placeholder:text-navy/40 focus:outline-none focus:border-gold transition-colors'
+  'w-full px-4 py-3 rounded-[10px] border border-[rgba(16,32,55,0.15)] bg-[rgba(199,162,96,0.04)] ' +
+  'font-body text-navy text-base placeholder:text-navy/35 ' +
+  'focus:outline-none focus:border-gold transition-colors'
 
 const labelCls = 'block font-body font-medium text-sm text-navy mb-1.5'
 
@@ -64,20 +65,7 @@ export function QuizContactForm({ data, onChange, onBack, onSubmit, loading }: Q
         />
       </div>
 
-      <div>
-        <label htmlFor="quiz_language" className={labelCls}>Idioma preferido</label>
-        <select
-          id="quiz_language" name="language"
-          value={data.language} onChange={handle}
-          className={inputCls}
-        >
-          <option value="español">Español</option>
-          <option value="english">English</option>
-          <option value="both">Ambos</option>
-        </select>
-      </div>
-
-      {/* Honeypot: hidden from real users, catches bots */}
+      {/* Honeypot */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="quiz_website">Website</label>
         <input
@@ -87,20 +75,20 @@ export function QuizContactForm({ data, onChange, onBack, onSubmit, loading }: Q
         />
       </div>
 
-      <p className="font-body text-xs text-navy/50">
+      <p className="font-body text-xs text-navy/45">
         * Campos obligatorios. Tu información está protegida y nunca será compartida.
       </p>
 
       <div className="flex gap-3 pt-2">
         <button
           type="button" onClick={onBack}
-          className="flex-none px-6 py-3 rounded-md border-2 border-navy/20 font-body text-navy hover:border-navy/40 transition-colors cursor-pointer"
+          className="flex-none px-6 py-3 rounded-[10px] border border-[rgba(16,32,55,0.15)] font-body text-navy/70 hover:border-navy/40 hover:text-navy transition-colors cursor-pointer"
         >
           ← Atrás
         </button>
         <button
           type="button" onClick={onSubmit} disabled={loading}
-          className="flex-1 px-6 py-3 rounded-md bg-navy text-white font-body font-medium hover:bg-navy-light transition-colors disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+          className="flex-1 px-6 py-3 rounded-[10px] bg-gold text-navy font-body font-semibold text-sm uppercase tracking-wider hover:scale-[1.02] transition-transform duration-150 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
         >
           {loading ? 'Enviando...' : 'Recibir mi guía gratis →'}
         </button>

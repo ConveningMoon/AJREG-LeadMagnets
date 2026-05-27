@@ -1,4 +1,4 @@
-import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
+import Image from 'next/image'
 
 const NAV_LINKS = [
   { label: 'Home',    href: 'https://ajrealestateva.com' },
@@ -40,23 +40,18 @@ const SOCIAL = [
 export function Footer() {
   return (
     <footer className="bg-navy text-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div className="max-w-[940px] mx-auto px-6 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
 
           {/* Logo + tagline */}
           <div>
-            {/* REEMPLAZAR: cuando logo-white.png esté disponible:
-                <Image src="/images/logo-white.png" alt="A&J Real Estate Group"
-                       width={140} height={48} className="mb-4" />
-            */}
-            <ImagePlaceholder
-              width={140} height={48}
-              label="Logo blanco A&J (140×48)"
-              className="mb-4"
-            />
-            <p className="font-body text-sm text-white/60 leading-relaxed">
-              Especialistas en compradores hispanos en Hampton Roads, Virginia.
-            </p>
+            <Image 
+				src="/images/logo-white_2.webp" 
+				alt="A&J Real Estate Group"
+				width={140} 
+				height={48} 
+				className="mb-4" 
+			/>
           </div>
 
           {/* Nav */}

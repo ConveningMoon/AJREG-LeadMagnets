@@ -11,7 +11,6 @@ import { submitLead, type ContactData }     from '@/lib/itmano'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
-// Steps 0–4 are the 5 MC questions. Step 5 is the contact form.
 const TOTAL_STEPS = QUIZ_QUESTIONS.length + 1
 
 const emptyContact: ContactData & { website: string } = {
@@ -67,13 +66,13 @@ export function Quiz() {
   if (status === 'error')   return <QuizError onRetry={() => setStatus('idle')} />
 
   const variants = {
-    enter:  (d: number) => ({ x: pref ? 0 : d * 48,  opacity: 0 }),
-    center:              ({ x: 0,               opacity: 1 }),
-    exit:   (d: number) => ({ x: pref ? 0 : d * -48, opacity: 0 }),
+    enter:  (d: number) => ({ x: pref ? 0 : d * 40,  opacity: 0 }),
+    center:              ({ x: 0,                      opacity: 1 }),
+    exit:   (d: number) => ({ x: pref ? 0 : d * -40,  opacity: 0 }),
   }
 
   return (
-    <div className="space-y-7">
+    <div>
       <QuizProgress step={step} total={TOTAL_STEPS} />
 
       <AnimatePresence mode="wait" custom={dir}>
@@ -88,7 +87,10 @@ export function Quiz() {
         >
           {isContactStep ? (
             <>
-              <h3 className="font-heading text-xl font-semibold text-navy mb-6">
+              <h3
+                className="font-heading font-bold text-navy mb-6"
+                style={{ fontSize: '1.9rem', lineHeight: '1.1' }}
+              >
                 ¿A dónde enviamos tu guía?
               </h3>
               <QuizContactForm
@@ -101,10 +103,19 @@ export function Quiz() {
             </>
           ) : (
             <>
-              <h3 className="font-heading text-xl font-semibold text-navy mb-6">
+              <p className="font-body text-opaque text-sm mb-1">
+                {currentQuestion?.question && 'Cuéntanos un poco...'}
+              </p>
+              <h3
+                className="font-heading font-bold text-navy mb-2"
+                style={{ fontSize: '1.9rem', lineHeight: '1.1' }}
+              >
                 {currentQuestion?.question}
               </h3>
-              <div className="grid grid-cols-1 gap-3">
+              <p className="font-body text-navy/60 text-sm mb-6">
+                Esto nos ayuda a enviarte los recursos más relevantes para ti
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {currentQuestion?.options.map((opt) => (
                   <QuizOption
                     key={opt.value}
@@ -116,8 +127,9 @@ export function Quiz() {
               </div>
               {step > 0 && (
                 <button
-                  type="button" onClick={goBack}
-                  className="mt-5 text-sm font-body text-navy/50 hover:text-navy transition-colors cursor-pointer"
+                  type="button"
+                  onClick={goBack}
+                  className="mt-6 text-sm font-body text-opaque hover:text-navy transition-colors cursor-pointer"
                 >
                   ← Atrás
                 </button>

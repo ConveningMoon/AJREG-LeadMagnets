@@ -1,31 +1,28 @@
 'use client'
+import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder'
-import { SectionWrapper }   from '@/components/ui/SectionWrapper'
 
-// REEMPLAZAR: sustituye este array con testimonios reales
-// Estructura: añade tantos objetos como necesites, el grid se adapta solo
 const TESTIMONIALS = [
   {
     id:       1,
-    name:     'María G.',
+    image:    '/testimonials/T_1.webp',
+    name:     'Maduro Family',
     location: 'Virginia Beach · Casa unifamiliar',
-    quote:    'REEMPLAZAR — Cita real de la cliente aquí. Ejemplo: "Adriana nos guió paso a paso y nunca nos sentimos solos en el proceso. ¡Gracias a la guía entendimos todo desde el principio!"',
-    photo:    '/images/testimonials/1.webp', // REEMPLAZAR con foto real
+    quote:    'Como padres primerizos con presupuesto ajustado, nos sentíamos abrumados. Adriana nos tranquilizó y encontró programas de asistencia. En dos meses teníamos nuestro hogar con nursery perfecta.',
   },
   {
     id:       2,
-    name:     'Carlos & Ana R.',
-    location: 'Chesapeake · Townhouse',
-    quote:    'REEMPLAZAR — Cita real del cliente aquí. Ejemplo: "No sabíamos nada del proceso de compra aquí. La guía fue nuestra biblia durante meses de búsqueda."',
-    photo:    '/images/testimonials/2.webp',
+    image:    '/testimonials/T_2.webp',
+    name:     'Flores Family',
+    location: 'North Carolina · Townhouse',
+    quote:    'Buscábamos barrio seguro y buenas escuelas. Adriana, como madre de tres, entendió nuestras necesidades perfectamente. En dos meses encontramos la casa ideal con patio enorme.',
   },
   {
     id:       3,
+    image:    '/testimonials/T_3.webp',
     name:     'Roberto M.',
-    location: 'Norfolk · Condominio',
-    quote:    'REEMPLAZAR — Cita real del cliente aquí. Ejemplo: "Gracias al equipo de A&J encontramos el hogar perfecto dentro de nuestro presupuesto. 100% recomendados."',
-    photo:    '/images/testimonials/3.webp',
+    location: 'Virginia Beach · Condominio',
+    quote:    'Con horarios impredecibles de militar, Adriana se adaptó completamente. Me ayudó con mi préstamo VA y encontramos un townhouse perfecto. Me sentí como en familia desde el primer día.',
   },
 ]
 
@@ -33,41 +30,77 @@ export function Testimonials() {
   const pref = useReducedMotion()
 
   return (
-    <div className="bg-cream/30">
-      <SectionWrapper>
-        <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-navy text-center mb-12">
-          Familias que ya encontraron su hogar
-        </h2>
+    <section className="py-20" style={{ backgroundColor: 'rgba(16,32,55,0.03)' }}>
+      <div className="max-w-[940px] mx-auto px-6">
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {TESTIMONIALS.map(({ id, name, location, quote, photo: _photo }, i) => (
+        {/* Header */}
+        <div className="text-center space-y-3 mb-10">
+          <p className="font-body text-[11px] font-semibold tracking-[0.18em] uppercase text-opaque">
+            Testimonios
+          </p>
+          <h2
+            className="font-heading font-semibold text-navy"
+            style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', lineHeight: '1.05' }}
+          >
+            Familias que ya encontraron su hogar
+          </h2>
+        </div>
+
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {TESTIMONIALS.map(({ id, image, name, location, quote }, i) => (
             <motion.figure
               key={id}
-              className="bg-white rounded-lg p-7 shadow-card border border-cream flex flex-col gap-4"
-              initial={pref ? {} : { opacity: 0, y: 24 }}
+              initial={pref ? {} : { opacity: 0, y: 20 }}
               whileInView={pref ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={pref ? {} : { duration: 0.4, ease: 'easeOut', delay: i * 0.1 }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: i * 0.1 }}
+              className="bg-white rounded-[20px] overflow-hidden flex flex-col"
+              style={{ boxShadow: '5px 5px 15px 1px rgba(16,32,55,0.08)' }}
             >
-              <blockquote className="font-body text-navy/70 leading-relaxed italic flex-1">
-                &ldquo;{quote}&rdquo;
-              </blockquote>
-              <figcaption className="flex items-center gap-3 pt-3 border-t border-cream">
-                {/* REEMPLAZAR: cuando las fotos estén disponibles, sustituye ImagePlaceholder
-                    por:
-                    <Image src={_photo} alt={`Foto de ${name}`} width={48} height={48}
-                           className="rounded-full object-cover flex-none" />
-                */}
-                <ImagePlaceholder width={48} height={48} className="rounded-full flex-none" />
-                <div>
-                  <p className="font-body font-semibold text-navy text-sm">{name}</p>
-                  <p className="font-body text-xs text-navy/50">{location}</p>
+              {/* Photo — prominent top block */}
+              <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
+                <Image
+                  src={image}
+                  alt={name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 313px"
+                />
+                {/* Gold gradient overlay at bottom for smooth transition */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-16"
+                  style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.95))' }}
+                />
+              </div>
+
+              {/* Content */}
+              <div className="px-6 pb-6 pt-3 flex flex-col gap-3 flex-1">
+                {/* Decorative quote mark */}
+                <div
+                  className="font-heading text-gold leading-none select-none"
+                  style={{ fontSize: '3rem', lineHeight: 1 }}
+                  aria-hidden="true"
+                >
+                  &ldquo;
                 </div>
-              </figcaption>
+
+                <blockquote
+                  className="font-body italic text-navy/75 leading-relaxed flex-1"
+                  style={{ fontSize: '0.95rem', marginTop: '-18px' }}
+                >
+                  {quote}
+                </blockquote>
+
+                <figcaption className="pt-3 border-t border-[rgba(16,32,55,0.08)]">
+                  <p className="font-body font-semibold text-navy text-sm">{name}</p>
+                  <p className="font-body text-xs text-opaque mt-0.5">{location}</p>
+                </figcaption>
+              </div>
             </motion.figure>
           ))}
         </div>
-      </SectionWrapper>
-    </div>
+      </div>
+    </section>
   )
 }
