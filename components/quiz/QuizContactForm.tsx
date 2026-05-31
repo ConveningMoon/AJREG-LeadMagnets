@@ -79,6 +79,7 @@ export function QuizContactForm({ data, onChange, onBack, onSubmit, loading }: Q
         >
           <option value="es">Español</option>
           <option value="en">English</option>
+          <option value="pt">Português</option>
         </select>
       </div>
 
