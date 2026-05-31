@@ -1,73 +1,133 @@
-# Guía del Comprador Hispano — Landing Page
+# itmano-landing-pages · A&J Real Estate
 
-Premium lead magnet landing page for A&J Real Estate Group.
-Deploys to `lm.ajrealestateva.com`.
+Landing pages de lead magnets para clientes de ITMANO. Este repo es **público y no confiable** — no tiene acceso a la base de datos del CRM, no tiene service keys, no tiene secretos.
+
+Deploys a `lm.ajrealestateva.com` vía Vercel.
+
+---
+
+## Frontera de seguridad
+
+```
+Este repo                          CRM (app.itmano.com)
+─────────────────────              ──────────────────────────
+Next.js estático          ──────▶  /api/intake/{public_id}/submit
+sin Supabase                       /api/intake/{public_id}/view  (intake.js)
+sin service keys
+sin acceso a DB
+```
+
+La comunicación ocurre **solo** a través de los endpoints públicos de intake. El `channel_id` que va en el HTML no es un secreto — es un ID público que identifica el origen de los leads. Si este repo se compromete, la base de datos del CRM queda intacta.
+
+**Nunca agregar:**
+- Variables `SUPABASE_SERVICE_ROLE_KEY` o similares
+- Llamadas directas a la DB
+- Cualquier secret que no deba ser visible en el HTML final
+
+---
 
 ## Quick Start
 
 ```bash
 npm install
-cp .env.example .env.local   # edit with your real channel ID
+cp .env.example .env.local   # agregar el channel ID real (ver abajo)
 npm run dev
 ```
 
-Open http://localhost:3000
+Abre http://localhost:3000
 
-## Environment Variables
+---
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `NEXT_PUBLIC_ITMANO_BASE_URL` | No | ITMANO base URL (default: https://app.itmano.com) |
-| `NEXT_PUBLIC_ITMANO_CHANNEL_ID` | **Yes** | Public channel ID from ITMANO → Sources |
+## Configurar el Channel ID
 
-### Getting Your Channel ID
-1. Log in to ITMANO → **Sources**
-2. Find or create the "Guía del Comprador Hispano" lead magnet channel
-3. Copy its `public_id` (format: `chn_xxxxx`)
-4. Paste into `NEXT_PUBLIC_ITMANO_CHANNEL_ID` in `.env.local`
+El `channel_id` identifica el canal de entrada de leads en el CRM. Se obtiene así:
 
-Without a channel ID, intake.js won't load and the form will use the direct fetch fallback.
+1. Entrar a **app.itmano.com → Sources**
+2. Encontrar o crear el canal "Guía del Comprador Hispano"
+3. Copiar el `public_id` (formato: `chn_xxxxxxxxxxxxxxxxxx`)
+4. Pegarlo en `.env.local`:
 
-## Replacing Content Placeholders
-
-Search the codebase for `REEMPLAZAR` to find all content the client must supply:
-
-| File | What to replace |
-|------|----------------|
-| `components/sections/AgentIntro.tsx` | Adriana's real bio, years of experience, families served |
-| `components/sections/Testimonials.tsx` | Real client testimonials (name, quote, location) |
-| `components/sections/Footer.tsx` | Real social media profile URLs |
-
-## Adding Real Images
-
-See `public/images/ASSETS.md` for dimensions and instructions.
-
-When testimonial photos and logo are ready:
-1. Drop files at the paths listed in `ASSETS.md`
-2. In `Testimonials.tsx`: uncomment the `<Image>` block, remove `<ImagePlaceholder>`
-3. In `Footer.tsx`: uncomment the `<Image>` block, remove `<ImagePlaceholder>`
-
-## Deploy to Vercel
-
-```bash
-# 1. Push to GitHub
-git push origin main
-
-# 2. Import project at vercel.com/new
-# 3. Set env vars in Vercel dashboard:
-#    NEXT_PUBLIC_ITMANO_BASE_URL = https://app.itmano.com
-#    NEXT_PUBLIC_ITMANO_CHANNEL_ID = chn_xxxxx
-
-# 4. Add custom domain: lm.ajrealestateva.com
+```
+NEXT_PUBLIC_ITMANO_CHANNEL_ID=chn_xxxxxxxxxxxxxxxxxx
 ```
 
-Framework preset: Next.js (auto-detected). Build command: `npm run build`. Output: `.next`.
+También está declarado en [lib/channels.ts](lib/channels.ts) como referencia documentada. En producción, el valor siempre viene del env var de Vercel.
+
+Sin channel ID, `intake.js` no carga y el formulario usa un fallback de `fetch` directo.
+
+---
+
+## Variables de entorno
+
+| Variable | Requerida | Descripción |
+|----------|-----------|-------------|
+| `NEXT_PUBLIC_ITMANO_CHANNEL_ID` | **Sí** | Public channel ID de ITMANO → Sources |
+| `NEXT_PUBLIC_ITMANO_BASE_URL` | No | Base URL del CRM (default: `https://app.itmano.com`) |
+
+Ambas son `NEXT_PUBLIC_` — van embebidas en el HTML. No son secretos.
+
+---
+
+## Deploy a Vercel + subdominio
+
+```bash
+# 1. Push a GitHub
+git push origin main
+
+# 2. Importar en vercel.com/new (Next.js se detecta automático)
+
+# 3. Agregar env vars en el dashboard de Vercel:
+#    NEXT_PUBLIC_ITMANO_CHANNEL_ID = chn_xxxxxxxxxxxxxxxxxx
+#    NEXT_PUBLIC_ITMANO_BASE_URL   = https://app.itmano.com
+
+# 4. Domains → Add: lm.ajrealestateva.com
+#    Agregar CNAME en el DNS del cliente apuntando a cname.vercel-dns.com
+```
+
+Preset: Next.js (auto). Build: `npm run build`. Output dir: `.next`.
+
+---
+
+## Agregar una nueva LP (nuevo lead magnet o nuevo cliente)
+
+Este repo es single-tenant por ahora (solo A&J en `/`). Cuando entre el segundo cliente:
+
+1. **Crear el canal** en app.itmano.com → Sources. Anotar el `public_id`.
+
+2. **Agregar el channel ID** en [lib/channels.ts](lib/channels.ts):
+   ```ts
+   export const NUEVO_CLIENTE_CHANNEL =
+     process.env.NEXT_PUBLIC_NUEVO_CLIENTE_CHANNEL_ID ?? 'REPLACE_WITH_CHANNEL_ID'
+   ```
+
+3. **Crear la ruta** en `app/`:
+   - Single-tenant adicional: `app/nuevo-lead-magnet/page.tsx`
+   - Multi-tenant por hostname: agregar middleware en `middleware.ts` que reescriba la ruta según `request.headers.get('host')`
+
+4. **Crear los componentes** de la nueva LP en `components/sections/`. Reusar el quiz (`components/quiz/Quiz.tsx`) pasándole el channel ID como prop si se decide desacoplar.
+
+5. **Configurar el subdominio** en Vercel → Domains → Add `lm.nuevocliente.com` + CNAME en su DNS.
+
+6. **Agregar el env var** del nuevo channel ID en el dashboard de Vercel.
+
+---
+
+## Contenido reemplazable
+
+| Archivo | Qué reemplazar |
+|---------|---------------|
+| `components/sections/AgentIntro.tsx` | Bio de Adriana, años de experiencia, familias atendidas |
+| `components/sections/Testimonials.tsx` | Testimonios reales (foto, nombre, texto, ciudad) |
+| `components/sections/Footer.tsx` | URLs reales de Instagram y Facebook |
+| `public/images/ASSETS.md` | Guía de dimensiones para imágenes |
+
+---
 
 ## Scripts
 
 ```bash
-npm run dev      # development server
-npm run build    # production build
+npm run dev      # servidor de desarrollo
+npm run build    # build de producción
 npm run lint     # ESLint
 npx tsc --noEmit # type check
 ```

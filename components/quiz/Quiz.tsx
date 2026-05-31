@@ -18,7 +18,7 @@ const emptyContact: ContactData & { website: string } = {
   last_name:  '',
   email:      '',
   phone:      '',
-  language:   'español',
+  language:   'es',
   website:    '',
 }
 

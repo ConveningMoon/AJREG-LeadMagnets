@@ -1,5 +1,5 @@
 'use client'
-import { type ChangeEvent } from 'react'
+import { type ChangeEvent, type FormEvent } from 'react'
 import type { ContactData } from '@/lib/itmano'
 
 interface QuizContactFormProps {
@@ -22,8 +22,13 @@ export function QuizContactForm({ data, onChange, onBack, onSubmit, loading }: Q
     onChange(e.target.name, e.target.value)
   }
 
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    onSubmit()
+  }
+
   return (
-    <div className="space-y-4">
+    <form data-itmano-form onSubmit={handleSubmit} noValidate className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="quiz_first_name" className={labelCls}>Nombre *</label>
@@ -65,7 +70,19 @@ export function QuizContactForm({ data, onChange, onBack, onSubmit, loading }: Q
         />
       </div>
 
-      {/* Honeypot */}
+      <div>
+        <label htmlFor="quiz_language" className={labelCls}>Prefiero comunicarme en</label>
+        <select
+          id="quiz_language" name="language"
+          value={data.language} onChange={handle}
+          className={inputCls}
+        >
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      {/* Honeypot — hidden from real users, bots fill it */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="quiz_website">Website</label>
         <input
@@ -87,12 +104,12 @@ export function QuizContactForm({ data, onChange, onBack, onSubmit, loading }: Q
           ← Atrás
         </button>
         <button
-          type="button" onClick={onSubmit} disabled={loading}
+          type="submit" disabled={loading}
           className="flex-1 px-6 py-3 rounded-[10px] bg-gold text-navy font-body font-semibold text-sm uppercase tracking-wider hover:scale-[1.02] transition-transform duration-150 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
         >
           {loading ? 'Enviando...' : 'Recibir mi guía gratis →'}
         </button>
       </div>
-    </div>
+    </form>
   )
 }
