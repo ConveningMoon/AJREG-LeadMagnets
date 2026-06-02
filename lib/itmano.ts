@@ -1,4 +1,4 @@
-import type { QuizAnswers } from './quiz-data'
+import type { FormAnswer } from './quiz-data'
 
 export interface ContactData {
   first_name: string
@@ -9,7 +9,7 @@ export interface ContactData {
 }
 
 export interface LeadPayload extends ContactData {
-  quiz_answers: QuizAnswers
+  form_answers: FormAnswer[]
   website?: string // honeypot — never sent to CRM
 }
 
