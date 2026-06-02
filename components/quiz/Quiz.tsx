@@ -7,7 +7,7 @@ import { QuizContactForm }  from './QuizContactForm'
 import { QuizSuccess }      from './QuizSuccess'
 import { QuizError }        from './QuizError'
 import { QUIZ_QUESTIONS, buildFormAnswers, type QuizAnswers } from '@/lib/quiz-data'
-import { submitLead, type ContactData }                       from '@/lib/itmano'
+import { submitLead, type ContactData, type SubmitResult }     from '@/lib/itmano'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -26,9 +26,10 @@ export function Quiz() {
   const pref      = useReducedMotion()
   const [step,    setStep]    = useState(0)
   const [dir,     setDir]     = useState<1 | -1>(1)
-  const [answers, setAnswers] = useState<QuizAnswers>({})
-  const [contact, setContact] = useState({ ...emptyContact })
-  const [status,  setStatus]  = useState<Status>('idle')
+  const [answers,      setAnswers]      = useState<QuizAnswers>({})
+  const [contact,      setContact]      = useState({ ...emptyContact })
+  const [status,       setStatus]       = useState<Status>('idle')
+  const [submitResult, setSubmitResult] = useState<SubmitResult | null>(null)
 
   const currentQuestion = QUIZ_QUESTIONS[step]
   const isContactStep   = step === QUIZ_QUESTIONS.length
@@ -55,14 +56,17 @@ export function Quiz() {
   async function handleSubmit() {
     setStatus('submitting')
     try {
-      await submitLead({ ...contact, form_answers: buildFormAnswers(QUIZ_QUESTIONS, answers) })
+      const result = await submitLead({ ...contact, form_answers: buildFormAnswers(QUIZ_QUESTIONS, answers) })
+      setSubmitResult(result)
       setStatus('success')
     } catch {
       setStatus('error')
     }
   }
 
-  if (status === 'success') return <QuizSuccess />
+  // LM form: show duplicate message when already_submitted.
+  // Future event forms: pass alreadySubmitted={false} always to ignore status.
+  if (status === 'success') return <QuizSuccess alreadySubmitted={submitResult?.status === 'already_submitted'} />
   if (status === 'error')   return <QuizError onRetry={() => setStatus('idle')} />
 
   const variants = {

@@ -1,5 +1,7 @@
+import type { SubmitResult } from '@/lib/itmano'
+
 interface ItmlanoInstance {
-  submit: (payload: Record<string, unknown>) => Promise<void>
+  submit: (payload: Record<string, unknown>) => Promise<SubmitResult | void>
 }
 
 declare global {

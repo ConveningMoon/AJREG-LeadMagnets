@@ -13,9 +13,14 @@ export interface LeadPayload extends ContactData {
   website?: string // honeypot — never sent to CRM
 }
 
-export async function submitLead(payload: LeadPayload): Promise<void> {
+export interface SubmitResult {
+  status:       'created' | 'already_submitted'
+  channel_type: string
+}
+
+export async function submitLead(payload: LeadPayload): Promise<SubmitResult> {
   // Silently succeed for bots that fill the honeypot
-  if (payload.website) return
+  if (payload.website) return { status: 'created', channel_type: 'lead_magnet' }
 
   const { website: _honeypot, ...cleanPayload } = payload
 
@@ -24,8 +29,12 @@ export async function submitLead(payload: LeadPayload): Promise<void> {
 
   // Primary: use intake.js SDK (carries visitor_id + UTMs automatically)
   if (typeof window !== 'undefined' && window.itmano?.submit) {
-    await window.itmano.submit(cleanPayload as Record<string, unknown>)
-    return
+    const raw = await window.itmano.submit(cleanPayload as Record<string, unknown>)
+    // intake.js proxies the CRM response — parse if available, fall back to 'created'
+    if (raw && typeof raw === 'object' && 'status' in raw) {
+      return raw as SubmitResult
+    }
+    return { status: 'created', channel_type: 'lead_magnet' }
   }
 
   // Fallback: direct POST if intake.js hasn't initialized yet
@@ -38,4 +47,6 @@ export async function submitLead(payload: LeadPayload): Promise<void> {
   if (!res.ok) {
     throw new Error(`CRM submit failed: ${res.status}`)
   }
+
+  return res.json() as Promise<SubmitResult>
 }
