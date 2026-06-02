@@ -60,3 +60,39 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
 export type QuizAnswers = {
   [K in (typeof QUIZ_QUESTIONS)[number]['field']]?: string
 }
+
+// ── Rich answer snapshot ──────────────────────────────────────────────────────
+
+export interface FormAnswer {
+  key:      string
+  question: string
+  value:    string
+  label:    string
+}
+
+/**
+ * Converts raw quiz responses into a self-contained snapshot that the CRM
+ * can store and display without needing access to the form definition.
+ *
+ * Reusable for any future lead-magnet or event LP:
+ *   form_answers = buildFormAnswers(MY_QUESTIONS, collectedResponses)
+ *
+ * For free-text fields (no option list), label === value.
+ */
+export function buildFormAnswers(
+  questions: QuizQuestion[],
+  responses: QuizAnswers,
+): FormAnswer[] {
+  return questions
+    .filter(q => responses[q.field as keyof QuizAnswers] !== undefined)
+    .map(q => {
+      const value  = responses[q.field as keyof QuizAnswers] as string
+      const option = q.options.find(o => o.value === value)
+      return {
+        key:      q.field,
+        question: q.question,
+        value,
+        label:    option?.label ?? value,
+      }
+    })
+}

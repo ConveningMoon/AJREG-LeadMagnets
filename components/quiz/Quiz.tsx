@@ -6,8 +6,8 @@ import { QuizOption }       from './QuizOption'
 import { QuizContactForm }  from './QuizContactForm'
 import { QuizSuccess }      from './QuizSuccess'
 import { QuizError }        from './QuizError'
-import { QUIZ_QUESTIONS, type QuizAnswers } from '@/lib/quiz-data'
-import { submitLead, type ContactData }     from '@/lib/itmano'
+import { QUIZ_QUESTIONS, buildFormAnswers, type QuizAnswers } from '@/lib/quiz-data'
+import { submitLead, type ContactData }                       from '@/lib/itmano'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -55,7 +55,7 @@ export function Quiz() {
   async function handleSubmit() {
     setStatus('submitting')
     try {
-      await submitLead({ ...contact, quiz_answers: answers })
+      await submitLead({ ...contact, form_answers: buildFormAnswers(QUIZ_QUESTIONS, answers) })
       setStatus('success')
     } catch {
       setStatus('error')
