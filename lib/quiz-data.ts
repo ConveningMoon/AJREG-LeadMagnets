@@ -1,3 +1,5 @@
+// Values for fit fields must match lib/form-contracts.ts exactly.
+
 export interface QuizQuestion {
   field: string
   question: string
@@ -5,54 +7,72 @@ export interface QuizQuestion {
 }
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
+  // ── Fit fields (CRM match_value rules apply to these keys/values) ─────────
+
   {
     field: 'timeline',
     question: '¿Cuándo planeas comprar tu casa?',
     options: [
-      { label: 'En los próximos 3 meses',  value: 'less_3_months' },
-      { label: 'En 3 a 6 meses',           value: '3_6_months'   },
-      { label: 'En 6 a 12 meses',          value: '6_12_months'  },
-      { label: 'Solo estoy explorando',    value: 'exploring'    },
+      { label: 'En los próximos 3 meses', value: 'under_3_months'    },
+      { label: 'En 3 a 6 meses',          value: '3_6_months'        },
+      { label: 'En 6 a 12 meses',         value: '6_12_months'       },
+      { label: 'Aún estoy explorando',    value: 'over_12_explorando' },
     ],
   },
+
   {
-    field: 'budget',
+    field: 'financing',
+    question: '¿En qué etapa estás con el financiamiento?',
+    options: [
+      { label: 'Pagamos al contado (cash)',             value: 'cash'        },
+      { label: 'Ya tengo carta de pre-aprobación',     value: 'preapproved' },
+      { label: 'Estoy en proceso con un prestamista',  value: 'in_process'  },
+      { label: 'Aún no he empezado a buscarlo',        value: 'not_started' },
+    ],
+  },
+
+  {
+    // Hampton Roads market tiers: <$300k → entry, $300k–$500k → mid, >$500k → premium
+    field: 'budget_tier',
     question: '¿Cuál es tu presupuesto aproximado?',
     options: [
-      { label: 'Menos de $250,000',      value: 'under_250k' },
-      { label: '$250,000 – $350,000',    value: '250k_350k'  },
-      { label: '$350,000 – $500,000',    value: '350k_500k'  },
-      { label: 'Más de $500,000',        value: 'over_500k'  },
+      { label: 'Hasta $300,000',             value: 'entry'     },
+      { label: '$300,000 – $500,000',        value: 'mid'       },
+      { label: 'Más de $500,000',            value: 'premium'   },
+      { label: 'Aún no lo tengo definido',   value: 'undefined' },
     ],
   },
+
   {
-    field: 'preapproval',
-    question: '¿Tienes pre-aprobación de hipoteca?',
+    field: 'agent_status',
+    question: '¿Ya tienes un agente de bienes raíces?',
     options: [
-      { label: 'Sí, ya tengo mi carta',           value: 'approved'      },
-      { label: 'Estoy en proceso',                value: 'in_process'    },
-      { label: 'Aún no, pero quiero empezar',     value: 'not_yet'       },
-      { label: 'No sé por dónde empezar',         value: 'need_guidance' },
+      { label: 'No, estoy buscando',  value: 'sin_agente' },
+      { label: 'Sí, ya tengo uno',    value: 'con_agente' },
     ],
   },
+
+  // ── Free fields (stored for display; no CRM scoring rules apply) ──────────
+
   {
     field: 'property_type',
     question: '¿Qué tipo de propiedad buscas?',
     options: [
-      { label: 'Casa unifamiliar',       value: 'single_family' },
-      { label: 'Townhouse',              value: 'townhouse'     },
-      { label: 'Condominio',             value: 'condo'         },
-      { label: 'No estoy seguro/a aún', value: 'undecided'     },
+      { label: 'Casa unifamiliar',        value: 'single_family' },
+      { label: 'Townhouse',               value: 'townhouse'     },
+      { label: 'Condominio',              value: 'condo'         },
+      { label: 'No estoy seguro/a aún',   value: 'undecided'     },
     ],
   },
+
   {
     field: 'area',
     question: '¿En qué zona de Hampton Roads te interesa vivir?',
     options: [
-      { label: 'Virginia Beach',      value: 'virginia_beach' },
-      { label: 'Norfolk',             value: 'norfolk'        },
-      { label: 'Chesapeake',          value: 'chesapeake'     },
-      { label: 'Suffolk / otra zona', value: 'suffolk_other'  },
+      { label: 'Virginia Beach',       value: 'virginia_beach' },
+      { label: 'Norfolk',              value: 'norfolk'        },
+      { label: 'Chesapeake',           value: 'chesapeake'     },
+      { label: 'Suffolk / otra zona',  value: 'suffolk_other'  },
     ],
   },
 ]

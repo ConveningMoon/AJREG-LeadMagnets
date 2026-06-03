@@ -56,7 +56,7 @@ export function Quiz() {
   async function handleSubmit() {
     setStatus('submitting')
     try {
-      const result = await submitLead({ ...contact, form_answers: buildFormAnswers(QUIZ_QUESTIONS, answers) })
+      const result = await submitLead({ ...contact, intent: 'compra', form_answers: buildFormAnswers(QUIZ_QUESTIONS, answers) })
       setSubmitResult(result)
       setStatus('success')
     } catch {
