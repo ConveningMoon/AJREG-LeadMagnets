@@ -1,4 +1,7 @@
-import type { FormAnswer } from './quiz-data'
+import type { FormAnswer }  from './quiz-data'
+import type { FormIntent }  from './form-contracts'
+
+export type { FormIntent }
 
 export interface ContactData {
   first_name: string
@@ -9,8 +12,9 @@ export interface ContactData {
 }
 
 export interface LeadPayload extends ContactData {
+  intent:       FormIntent
   form_answers: FormAnswer[]
-  website?: string // honeypot — never sent to CRM
+  website?:     string // honeypot — never sent to CRM
 }
 
 export interface SubmitResult {
