@@ -8,6 +8,7 @@ import { QuizSuccess }      from './QuizSuccess'
 import { QuizError }        from './QuizError'
 import { QUIZ_QUESTIONS, buildFormAnswers, type QuizAnswers } from '@/lib/quiz-data'
 import { submitLead, type ContactData, type SubmitResult }     from '@/lib/itmano'
+import type { FormIntent } from '@/lib/form-contracts'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -22,7 +23,12 @@ const emptyContact: ContactData & { website: string } = {
   website:    '',
 }
 
-export function Quiz() {
+interface QuizProps {
+  channelPublicId: string
+  intent:          FormIntent
+}
+
+export function Quiz({ channelPublicId, intent }: QuizProps) {
   const pref      = useReducedMotion()
   const [step,    setStep]    = useState(0)
   const [dir,     setDir]     = useState<1 | -1>(1)
@@ -56,7 +62,7 @@ export function Quiz() {
   async function handleSubmit() {
     setStatus('submitting')
     try {
-      const result = await submitLead({ ...contact, intent: 'compra', form_answers: buildFormAnswers(QUIZ_QUESTIONS, answers) })
+      const result = await submitLead(channelPublicId, { ...contact, intent, form_answers: buildFormAnswers(QUIZ_QUESTIONS, answers) })
       setSubmitResult(result)
       setStatus('success')
     } catch {

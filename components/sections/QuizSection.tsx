@@ -1,6 +1,12 @@
 import { Quiz } from '@/components/quiz/Quiz'
+import type { FormIntent } from '@/lib/form-contracts'
 
-export function QuizSection() {
+interface QuizSectionProps {
+  channelPublicId: string
+  intent:          FormIntent
+}
+
+export function QuizSection({ channelPublicId, intent }: QuizSectionProps) {
   return (
     <section
       id="quiz"
@@ -30,7 +36,7 @@ export function QuizSection() {
           className="bg-white rounded-[20px] px-8 sm:px-10 pb-10 pt-3"
           style={{ boxShadow: '7px 6px 20px rgba(16,32,55,0.20)' }}
         >
-          <Quiz />
+          <Quiz channelPublicId={channelPublicId} intent={intent} />
         </div>
       </div>
     </section>
