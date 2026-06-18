@@ -3,8 +3,8 @@ import { PERKS } from '@/lib/festival-data'
 export function FestivalResources() {
   return (
     <section id="recursos" className="relative overflow-hidden bg-[#163a52] px-6 py-[78px] text-white" style={{ scrollMarginTop: 64 }}>
-      <div className="absolute right-[8%] top-[30px] text-[34px]" style={{ color: 'rgba(246,181,10,.5)' }}>♫</div>
-      <div className="absolute bottom-10 left-[6%] text-[28px]" style={{ color: 'rgba(246,181,10,.4)' }}>♩</div>
+      <div className="absolute right-[8%] top-[30px] text-[34px]" style={{ color: 'rgba(246,181,10,.5)' }} aria-hidden="true">♫</div>
+      <div className="absolute bottom-10 left-[6%] text-[28px]" style={{ color: 'rgba(246,181,10,.4)' }} aria-hidden="true">♩</div>
 
       <div className="relative mx-auto max-w-[1000px] text-center">
         <div className="mb-3 text-[13px] font-bold tracking-[0.3em] text-[#f6b50a]">UN DÍA PARA TODA LA FAMILIA</div>

@@ -9,7 +9,7 @@ export function FestivalFooter() {
       <div className="mx-auto max-w-[840px]">
         <div style={{ fontFamily: 'var(--font-dm-serif)' }} className="mb-1.5 text-[24px] text-white">Festival para la Comunidad Latina</div>
         <div className="mb-3.5 text-[14px]">20 de junio · 12:00–4:00 pm · 4092 Foxwood Drive, VA Beach, VA 23462</div>
-        <a href={FESTIVAL_EVENT.phoneHref} className="mb-[34px] inline-flex items-center gap-2 text-[15px] font-bold text-[#f6b50a]">
+        <a href={FESTIVAL_EVENT.phoneHref} aria-label={`Llamar al ${FESTIVAL_EVENT.phoneLabel}`} className="mb-[34px] inline-flex items-center gap-2 text-[15px] font-bold text-[#f6b50a]">
           📞 {FESTIVAL_EVENT.phoneLabel}
         </a>
 
@@ -22,7 +22,7 @@ export function FestivalFooter() {
               alt={s.name}
               width={s.w}
               height={s.h}
-              className={`${FOOTER_LOGO_HEIGHTS[i]} w-auto opacity-90`}
+              className={`${FOOTER_LOGO_HEIGHTS[i] ?? 'h-12'} w-auto opacity-90`}
               style={{ filter: 'brightness(0) invert(1)' }}
             />
           ))}
