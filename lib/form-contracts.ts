@@ -19,7 +19,9 @@
 
 // ── Intent ────────────────────────────────────────────────────────────────────
 
-export type FormIntent = 'compra' | 'invierte' | 'vende'
+// 'compra' | 'invierte' | 'vende' — buyer-guide (Spanish).
+// 'buy' | 'sell' | 'event'        — festival (English).
+export type FormIntent = 'compra' | 'invierte' | 'vende' | 'buy' | 'sell' | 'event'
 
 // ── Buyer / Investor fit fields ───────────────────────────────────────────────
 
