@@ -23,8 +23,10 @@ export interface LMConfig {
 export const LM_REGISTRY: Record<string, LMConfig> = {
   'guia-para-familias-hispanas': {
     slug: 'guia-para-familias-hispanas',
-    // TODO(Dylan): replace with real channel ID from app.itmano.com/sources
-    channelPublicId: process.env.NEXT_PUBLIC_BUYER_GUIDE_CHANNEL_ID ?? 'REPLACE_WITH_CHANNEL_ID',
+    channelPublicId:
+      process.env.NEXT_PUBLIC_BUYER_GUIDE_CHANNEL_ID ??
+      process.env.NEXT_PUBLIC_ITMANO_CHANNEL_ID ??  // deprecated name — update Vercel env var
+      'REPLACE_WITH_CHANNEL_ID',
     intent: 'compra',
     meta: {
       title:       'Guía del Comprador Hispano — A&J Real Estate Group',
