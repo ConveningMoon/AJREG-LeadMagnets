@@ -83,8 +83,6 @@ export function festivalIntent(housingTopic?: string): FormIntent {
 
 // ── Split a single "Nombre y apellido" field into first/last for the CRM ───────
 export function splitName(full: string): { first_name: string; last_name: string } {
-  const parts = full.trim().split(/\s+/).filter(Boolean)
-  if (parts.length === 0) return { first_name: '', last_name: '' }
-  if (parts.length === 1) return { first_name: parts[0], last_name: '' }
-  return { first_name: parts[0], last_name: parts.slice(1).join(' ') }
+  const [first = '', ...rest] = full.trim().split(/\s+/).filter(Boolean)
+  return { first_name: first, last_name: rest.join(' ') }
 }
