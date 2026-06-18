@@ -1,4 +1,4 @@
-import { Quiz } from '@/components/quiz/Quiz'
+import { Quiz } from '@/components/pages/guia/quiz/Quiz'
 import type { FormIntent } from '@/lib/form-contracts'
 
 interface QuizSectionProps {

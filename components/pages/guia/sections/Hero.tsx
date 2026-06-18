@@ -116,7 +116,7 @@ export function Hero() {
           {/* ── Portrait + guide cover ── */}
           <div className="w-full lg:w-[420px]">
             <div
-              className="relative min-h-[70vh] w-full overflow-visible"
+              className="relative min-h-[70vh] w-full lg:overflow-visible"	
               style={{
                 backgroundImage: 'url(/images/adriana.webp)',
                 backgroundSize: 'cover',
@@ -124,8 +124,9 @@ export function Hero() {
               }}
             >
               <div
-                className="absolute z-10 bottom-0 right-0"
-                style={{ margin: 'auto -200px -200px auto'}}
+                // className="absolute z-10 bottom-0 right-0"
+				className="absolute z-10 bottom-0 left-1/2 -translate-x-1/2 mb-[-150px] lg:left-auto lg:right-0 lg:translate-x-0 lg:mr-[-200px] lg:mb-[-200px]"
+                // style={{ margin: 'auto -200px -150px auto' }}
               >
                 <div
                   className="inline-block rounded-xl p-4"
@@ -145,7 +146,7 @@ export function Hero() {
                       width={300}
                       height={390}
                       priority
-                      className="max-h-[400px] w-auto h-auto rounded-xl"
+                      className="max-h-[400px] min-w-[200px] w-auto h-auto rounded-xl"
                     />
                   </motion.div>
                 </div>
