@@ -101,12 +101,12 @@ export interface FormAnswer {
  */
 export function buildFormAnswers(
   questions: QuizQuestion[],
-  responses: QuizAnswers,
+  responses: Record<string, string | undefined>,
 ): FormAnswer[] {
   return questions
-    .filter(q => responses[q.field as keyof QuizAnswers] !== undefined)
+    .filter(q => responses[q.field] !== undefined)
     .map(q => {
-      const value  = responses[q.field as keyof QuizAnswers] as string
+      const value  = responses[q.field] as string
       const option = q.options.find(o => o.value === value)
       return {
         key:      q.field,

@@ -45,3 +45,9 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Festival success card entrance */
+@keyframes pop {
+  0%   { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}

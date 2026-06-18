@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { montserrat, ebGaramond } from '@/lib/fonts'
+import { montserrat, ebGaramond, dmSerif } from '@/lib/fonts'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${montserrat.variable} ${ebGaramond.variable}`}>
+    <html lang="es" className={`${montserrat.variable} ${ebGaramond.variable} ${dmSerif.variable}`}>
       <body className="font-body bg-base text-navy antialiased">
         {children}
       </body>
