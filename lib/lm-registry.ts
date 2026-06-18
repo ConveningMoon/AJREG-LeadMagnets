@@ -4,6 +4,7 @@ export interface LMConfig {
   slug:            string
   channelPublicId: string
   intent:          FormIntent
+  template:        'buyer-guide' | 'festival'
   meta: {
     title:       string
     description: string
@@ -28,6 +29,7 @@ export const LM_REGISTRY: Record<string, LMConfig> = {
       process.env.NEXT_PUBLIC_ITMANO_CHANNEL_ID ??  // deprecated name — update Vercel env var
       'REPLACE_WITH_CHANNEL_ID',
     intent: 'compra',
+    template: 'buyer-guide',
     meta: {
       title:       'Guía del Comprador Hispano — A&J Real Estate Group',
       description:
@@ -39,11 +41,29 @@ export const LM_REGISTRY: Record<string, LMConfig> = {
     },
   },
 
+  'festival-comunidad-latina': {
+    slug: 'festival-comunidad-latina',
+    channelPublicId:
+      process.env.NEXT_PUBLIC_FESTIVAL_CHANNEL_ID ?? 'REPLACE_WITH_CHANNEL_ID',
+    intent:   'event',          // default; per-submission intent comes from the form
+    template: 'festival',
+    meta: {
+      title:       'Festival para la Comunidad Latina — A&J Real Estate Group',
+      description:
+        'Celebra con nosotros la cultura hispana. Viernes 20 de junio, 12–4 pm, ' +
+        '4092 Foxwood Drive, VA Beach. Recursos sin costo para la comunidad. Entrada gratis.',
+      keywords:    ['festival latino Virginia Beach', 'comunidad latina Hampton Roads', 'evento gratis familia'],
+      ogImage:     '/FestivalLatino/Latinos.webp',
+      locale:      'es_US',
+    },
+  },
+
   // Example: add future LMs like this (no other file changes needed):
   // 'guia-para-vendedores': {
   //   slug: 'guia-para-vendedores',
   //   channelPublicId: process.env.NEXT_PUBLIC_SELLER_GUIDE_CHANNEL_ID ?? 'REPLACE_WITH_CHANNEL_ID',
   //   intent: 'vende',
+  //   template: 'buyer-guide',
   //   meta: { title: '...', description: '...', keywords: [...], ogImage: '/images/og-seller.jpg', locale: 'es_US' },
   // },
 }
