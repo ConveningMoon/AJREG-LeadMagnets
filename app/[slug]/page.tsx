@@ -7,13 +7,6 @@ import { Benefits }     from '@/components/pages/guia/sections/Benefits'
 import { QuizSection }  from '@/components/pages/guia/sections/QuizSection'
 import { Testimonials } from '@/components/pages/guia/sections/Testimonials'
 import { Footer }       from '@/components/pages/guia/sections/Footer'
-import { FestivalNav }       from '@/components/pages/festival/FestivalNav'
-import { FestivalBunting }   from '@/components/pages/festival/FestivalBunting'
-import { FestivalHero }      from '@/components/pages/festival/FestivalHero'
-import { FestivalResources } from '@/components/pages/festival/FestivalResources'
-import { FestivalDetails }   from '@/components/pages/festival/FestivalDetails'
-import { FestivalForm }      from '@/components/pages/festival/FestivalForm'
-import { FestivalFooter }    from '@/components/pages/festival/FestivalFooter'
 
 const BASE_URL = process.env.NEXT_PUBLIC_ITMANO_BASE_URL ?? 'https://app.itmano.com'
 
@@ -64,27 +57,13 @@ export default async function LMPage({ params }: PageProps) {
         data-channel={config.channelPublicId}
         strategy="afterInteractive"
       />
-      {config.template === 'festival' ? (
-        <>
-          <FestivalNav />
-          <FestivalBunting />
-          <main>
-            <FestivalHero />
-            <FestivalResources />
-            <FestivalDetails />
-            <FestivalForm channelPublicId={config.channelPublicId} />
-            <FestivalFooter />
-          </main>
-        </>
-      ) : (
-        <main>
-          <Hero />
-          <Benefits />
-          <QuizSection channelPublicId={config.channelPublicId} intent={config.intent} />
-          <Testimonials />
-          <Footer />
-        </main>
-      )}
+      <main>
+        <Hero />
+        <Benefits />
+        <QuizSection channelPublicId={config.channelPublicId} intent={config.intent} />
+        <Testimonials />
+        <Footer />
+      </main>
     </>
   )
 }
