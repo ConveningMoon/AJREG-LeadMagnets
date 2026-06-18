@@ -7,10 +7,10 @@ function scrollToQuiz() {
 }
 
 const BULLETS = [
-  'Hacks fiscales',
-  'Técnicas anti-impuestos',
-  'Pre-requisitos',
-  'Descuentos especiales',
+  'Cómo comprar aunque no tengas número de seguro social (préstamos ITIN)',
+  'Programas de Virginia que cubren parte del enganche — dinero que no se devuelve',
+  'Qué zonas de Hampton Roads son mejores para tu familia según escuelas y seguridad',
+  'Cómo protegerte de las trampas que afectan a nuestra comunidad',
 ]
 
 export function Hero() {
@@ -32,38 +32,35 @@ export function Hero() {
             <div className="flex items-center gap-3">
               <div className="h-px w-8 bg-gold flex-none" />
               <p className="font-body text-[11px] font-medium tracking-[0.16em] uppercase text-white">
-                Guía gratuita a compradores
+                Guía gratuita · Hampton Roads, Virginia
               </p>
             </div>
 
             {/* Title */}
             <div>
               <h1 className="font-heading font-bold text-white leading-[1.05]" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)' }}>
-                Compra tu próxima propiedad con
-              </h1>
-              <h1 className="font-heading font-bold text-gold italic leading-[1.05]" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)' }}>
-                total confianza
+                Tu Primera Casa en{' '}
+                <span className="text-gold italic">Estados Unidos</span>
               </h1>
             </div>
 
             {/* Description */}
             <p className="font-body text-white text-base leading-7">
-              Descarga gratis nuestra <strong>Guía del Comprador Hispano</strong> y descubre
-              el proceso paso a paso que han seguido cientos de familias para encontrar el
-              hogar ideal — sin sorpresas, sin estrés y al mejor precio.
+              Si llegaste a este país con el sueño de darle algo mejor a tu familia, esta guía
+              es para ti. El proceso completo, en español, sin letras chiquitas y sin sorpresas.
             </p>
 
             {/* Bullet list */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+            <div className="grid grid-cols-1 gap-y-2.5">
               {BULLETS.map((b) => (
-                <div key={b} className="flex items-center gap-2.5">
+                <div key={b} className="flex items-start gap-2.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     width={20}
                     height={20}
                     fill="currentColor"
-                    className="text-gold flex-none"
+                    className="text-gold flex-none mt-0.5"
                     aria-hidden="true"
                   >
                     <path d="M21 11a1 1 0 0 0-1 1 8 8 0 0 1-8 8A8 8 0 0 1 6.33 6.36 7.93 7.93 0 0 1 12 4a8.79 8.79 0 0 1 1.9.22 1 1 0 1 0 .47-1.94A10.54 10.54 0 0 0 12 2a10 10 0 0 0-7 17.09A9.93 9.93 0 0 0 12 22a10 10 0 0 0 10-10 1 1 0 0 0-1-1z" />
@@ -91,7 +88,7 @@ export function Hero() {
                   <path d="M10.74 3.75c-.51 0-.95.39-.99.91-.16 1.75-.18 3.52-.08 5.27-.25.01-.49.03-.74.05l-1.49.11c-.57.04-.9.68-.59 1.17 1.06 1.66 2.43 3.11 4.04 4.26l.6.43c.31.22.72.22 1.03 0l.6-.43c1.6-1.15 2.97-2.6 4.04-4.26.31-.49-.02-1.13-.59-1.17l-1.49-.11c-.25-.02-.5-.04-.74-.05.1-1.75.07-3.52-.08-5.27-.04-.52-.48-.91-.99-.91h-2.52Z" />
                   <path fillRule="evenodd" clipRule="evenodd" d="M5 16.25c.41 0 .75.34.75.75v2c0 .14.11.25.25.25h12c.14 0 .25-.11.25-.25v-2c0-.41.34-.75.75-.75s.75.34.75.75v2c0 .97-.78 1.75-1.75 1.75H6c-.97 0-1.75-.78-1.75-1.75v-2c0-.41.34-.75.75-.75Z" />
                 </svg>
-                Quiero la guía gratis
+                Quiero mi guía gratis →
               </button>
 
               <div className="flex items-center gap-2">
@@ -107,7 +104,7 @@ export function Hero() {
                   <path d="M3 13V4.22L4.94 4.07C6.64 3.94 8.3 3.54 9.87 2.89L12 2l2.13.89C15.7 3.54 17.36 3.94 19.06 4.07L21 4.22V13c0 4.97-4.03 9-9 9s-9-4.03-9-9Z" stroke="rgba(255,255,255,0.45)" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <span className="font-body text-white/50 text-xs">
-                  100% gratis · Tus datos están protegidos
+                  100% gratis · En español · Sin compromiso
                 </span>
               </div>
             </div>
@@ -116,7 +113,7 @@ export function Hero() {
           {/* ── Portrait + guide cover ── */}
           <div className="w-full lg:w-[420px]">
             <div
-              className="relative min-h-[70vh] w-full lg:overflow-visible"	
+              className="relative min-h-[70vh] w-full lg:overflow-visible"
               style={{
                 backgroundImage: 'url(/images/adriana.webp)',
                 backgroundSize: 'cover',
@@ -124,16 +121,14 @@ export function Hero() {
               }}
             >
               <div
-                // className="absolute z-10 bottom-0 right-0"
-				className="absolute z-10 bottom-0 left-1/2 -translate-x-1/2 mb-[-150px] lg:left-auto lg:right-0 lg:translate-x-0 lg:mr-[-200px] lg:mb-[-200px]"
-                // style={{ margin: 'auto -200px -150px auto' }}
+                className="absolute z-10 bottom-0 left-1/2 -translate-x-1/2 mb-[-150px] lg:left-auto lg:right-0 lg:translate-x-0 lg:mr-[-200px] lg:mb-[-200px]"
               >
                 <div
                   className="inline-block rounded-xl p-4"
                   style={{
                     background:
                       'radial-gradient(ellipse at center, #c7a260 0%, transparent 60%)',
-					padding: '100px',
+                    padding: '100px',
                   }}
                 >
                   <motion.div

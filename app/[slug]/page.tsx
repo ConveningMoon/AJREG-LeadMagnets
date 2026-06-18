@@ -5,6 +5,7 @@ import { LM_REGISTRY }  from '@/lib/lm-registry'
 import { Hero }         from '@/components/pages/guia/sections/Hero'
 import { Benefits }     from '@/components/pages/guia/sections/Benefits'
 import { QuizSection }  from '@/components/pages/guia/sections/QuizSection'
+import { AgentIntro }  from '@/components/pages/guia/sections/AgentIntro'
 import { Testimonials } from '@/components/pages/guia/sections/Testimonials'
 import { Footer }       from '@/components/pages/guia/sections/Footer'
 
@@ -61,6 +62,7 @@ export default async function LMPage({ params }: PageProps) {
         <Hero />
         <Benefits />
         <QuizSection channelPublicId={config.channelPublicId} intent={config.intent} />
+        <AgentIntro />
         <Testimonials />
         <Footer />
       </main>

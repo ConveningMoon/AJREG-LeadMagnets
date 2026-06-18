@@ -29,13 +29,24 @@ export const LM_REGISTRY: Record<string, LMConfig> = {
       'REPLACE_WITH_CHANNEL_ID',
     intent: 'compra',
     meta: {
-      title:       'Guía del Comprador Hispano — A&J Real Estate Group',
+      title:       'Tu Primera Casa en Estados Unidos — Guía Gratuita para Familias Hispanas | Hampton Roads, VA',
       description:
-        'Descarga gratis nuestra Guía del Comprador Hispano y descubre el proceso paso a paso ' +
-        'que han seguido cientos de familias para comprar su casa en Hampton Roads sin sorpresas.',
-      keywords:    ['comprar casa Hampton Roads', 'guía comprador hispano', 'bienes raíces Virginia'],
-      ogImage:     '/images/og-image.jpg',
-      locale:      'es_US',
+        'Descarga gratis la guía completa en español para comprar tu primera casa en Hampton Roads, Virginia. ' +
+        'Préstamos ITIN, programas de ayuda de Virginia Housing y el proceso paso a paso. ' +
+        'Preparada por Adriana Meléndez, A&J Real Estate Group.',
+      keywords: [
+        'comprar casa Hampton Roads',
+        'primera casa Virginia',
+        'préstamo ITIN Virginia',
+        'guía comprador hispano',
+        'bienes raíces Virginia español',
+        'comprar casa sin seguro social',
+        'Virginia Beach',
+        'Chesapeake',
+        'Suffolk',
+      ],
+      ogImage: '/images/og-image.jpg',
+      locale:  'es_US',
     },
   },
 

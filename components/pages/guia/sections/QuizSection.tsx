@@ -18,16 +18,17 @@ export function QuizSection({ channelPublicId, intent }: QuizSectionProps) {
         {/* Header */}
         <div className="text-center space-y-3 mb-10">
           <p className="font-body text-[11px] font-semibold tracking-[0.18em] uppercase text-opaque">
-            Acceso a la guía
+            Descarga tu guía gratis
           </p>
           <h2
             className="font-heading font-bold text-navy"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', lineHeight: '1.05' }}
           >
-            Cuéntanos sobre tu búsqueda y recibe tu guía gratis
+            Cuéntanos un poco sobre ti y recibe la guía ahora
           </h2>
-          <p className="font-body text-navy/60 text-base">
-            Solo 6 preguntas rápidas para enviarte recursos personalizados
+          <p className="font-body text-navy/60 text-base leading-relaxed max-w-xl mx-auto">
+            Toma menos de 2 minutos. Te enviamos la guía de inmediato y, si tienes preguntas,
+            Adriana puede acompañarte en español sin ningún compromiso.
           </p>
         </div>
 

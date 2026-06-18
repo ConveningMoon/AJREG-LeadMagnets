@@ -8,21 +8,21 @@ const TESTIMONIALS = [
     image:    '/testimonials/T_1.webp',
     name:     'Maduro Family',
     location: 'Virginia Beach · Casa unifamiliar',
-    quote:    'Como padres primerizos con presupuesto ajustado, nos sentíamos abrumados. Adriana nos tranquilizó y encontró programas de asistencia. En dos meses teníamos nuestro hogar con nursery perfecta.',
+    quote:    'Teníamos miedo de que nuestro presupuesto no alcanzara. Adriana nos explicó los programas de ayuda de Virginia y encontramos dinero para el enganche que ni sabíamos que existía. En menos de dos meses, nuestros hijos ya tenían su cuarto.',
   },
   {
     id:       2,
     image:    '/testimonials/T_2.webp',
     name:     'Flores Family',
     location: 'North Carolina · Townhouse',
-    quote:    'Buscábamos barrio seguro y buenas escuelas. Adriana, como madre de tres, entendió nuestras necesidades perfectamente. En dos meses encontramos la casa ideal con patio enorme.',
+    quote:    'Lo que más nos importaba era el barrio y las escuelas. Adriana conoce Hampton Roads como nadie — nos mostró exactamente dónde buscar y por qué. Encontramos la casa con patio que queríamos, en la zona perfecta.',
   },
   {
     id:       3,
     image:    '/testimonials/T_3.webp',
     name:     'Roberto M.',
-    location: 'Virginia Beach · Condominio',
-    quote:    'Con horarios impredecibles de militar, Adriana se adaptó completamente. Me ayudó con mi préstamo VA y encontramos un townhouse perfecto. Me sentí como en familia desde el primer día.',
+    location: 'Virginia Beach · Townhouse',
+    quote:    'Como militar, mis horarios cambian constantemente. Adriana se movió a mi ritmo, me explicó el préstamo VA paso a paso y manejó todo. Cerré sin estrés y sin sorpresas.',
   },
 ]
 
@@ -36,13 +36,13 @@ export function Testimonials() {
         {/* Header */}
         <div className="text-center space-y-3 mb-10">
           <p className="font-body text-[11px] font-semibold tracking-[0.18em] uppercase text-opaque">
-            Testimonios
+            Familias que ya tienen sus llaves
           </p>
           <h2
             className="font-heading font-semibold text-navy"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', lineHeight: '1.05' }}
           >
-            Familias que ya encontraron su hogar
+            Ellos también pensaban que comprar era complicado
           </h2>
         </div>
 
