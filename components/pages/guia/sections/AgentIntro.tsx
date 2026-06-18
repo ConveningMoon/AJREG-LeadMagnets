@@ -13,25 +13,24 @@ export function AgentIntro() {
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-        <div className="flex flex-col md:flex-row items-end gap-10 md:gap-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-stretch">
 
-          {/* Photo — full image, not cropped, anchored to bottom, expands with section */}
+          {/* Photo — fixed 45% column, fills full section height, anchored to bottom */}
           <div
-            className="relative w-full md:flex-1 self-end"
-            style={{ minHeight: '420px' }}
+            className="relative w-full md:w-[45%] shrink-0 min-h-[420px]"
           >
             <Image
-              src="/images/adriana_2.webp"
+              src="/images/adriana_2b.webp"
               alt="Adriana Meléndez — Asesora de bienes raíces bilingüe, A&J Real Estate Group"
               fill
               className="object-contain object-bottom"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) 100vw, 45vw"
             />
           </div>
 
           {/* Bio */}
-          <div className="space-y-4 max-w-xl pb-20">
+          <div className="flex-1 min-w-0 space-y-4 py-20 md:pl-12">
             <div>
               <p className="font-body text-[11px] font-semibold tracking-[0.18em] uppercase text-opaque mb-1">
                 Quién preparó esta guía
