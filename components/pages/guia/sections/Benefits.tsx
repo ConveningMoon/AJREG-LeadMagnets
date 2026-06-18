@@ -1,37 +1,37 @@
 'use client'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Calculator, MapPin, TrendingUp, FileText, ClipboardList, Shield } from 'lucide-react'
+import { Calculator, CreditCard, Gift, MapPin, ClipboardList, Shield } from 'lucide-react'
 
 const BENEFITS = [
   {
-    Icon: Calculator,
-    title: 'Planificación financiera',
-    desc:  'Calcula cuánto puedes pagar realmente y qué gastos extras debes considerar antes de firmar.',
+    Icon:  Calculator,
+    title: '¿Cuánto puedes pagar de verdad?',
+    desc:  'Entiende el pago mensual real — con impuestos, seguro y todos los gastos — antes de enamorarte de una propiedad.',
   },
   {
-    Icon: MapPin,
-    title: 'Cómo elegir la zona ideal',
-    desc:  'Criterios para evaluar plusvalía, seguridad, servicios y proyección a 5 y 10 años.',
+    Icon:  CreditCard,
+    title: 'Comprar sin número de seguro social',
+    desc:  'Sí, es posible y es legal. Cómo funcionan los préstamos ITIN en Virginia y qué documentos necesitas.',
   },
   {
-    Icon: TrendingUp,
-    title: 'Estrategias de negociación',
-    desc:  'Tácticas reales que usan compradores expertos para conseguir el mejor precio.',
+    Icon:  Gift,
+    title: 'Programas de ayuda en Virginia',
+    desc:  'Virginia Housing tiene hasta ~$10,000 en ayuda para el enganche que no tienes que devolver. Te explicamos cómo calificar.',
   },
   {
-    Icon: FileText,
-    title: 'Aspectos legales clave',
-    desc:  'Documentos imprescindibles, escrituras y avalúos: lo que sí o sí debes revisar.',
+    Icon:  MapPin,
+    title: 'Las zonas ideales en Hampton Roads',
+    desc:  'Virginia Beach, Chesapeake, Suffolk, Norfolk y más — cuál encaja mejor con tu familia según escuelas, precio y comunidad.',
   },
   {
-    Icon: ClipboardList,
-    title: 'Checklists imprimibles',
-    desc:  'Listas paso a paso para visitar propiedades y comparar opciones objetivamente.',
+    Icon:  ClipboardList,
+    title: 'El proceso completo, paso a paso',
+    desc:  'Desde la pre-aprobación hasta el día que recibes las llaves, sin sorpresas en ninguna etapa.',
   },
   {
-    Icon: Shield,
-    title: 'Cierre sin sorpresas',
-    desc:  'Qué esperar del proceso de cierre y cómo proteger tu inversión a largo plazo.',
+    Icon:  Shield,
+    title: 'Protégete de las trampas',
+    desc:  'Las estafas más comunes contra familias hispanas en el proceso de compra — y cómo identificarlas a tiempo.',
   },
 ]
 
@@ -45,17 +45,18 @@ export function Benefits() {
         {/* Header */}
         <div className="text-center space-y-3">
           <p className="font-body text-[11px] font-semibold tracking-[0.18em] uppercase text-opaque">
-            Lo que aprenderás
+            Lo que contiene esta guía
           </p>
           <h2
             className="font-heading font-semibold text-navy"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', lineHeight: '1.05' }}
           >
-            Toda la información que un comprador inteligente necesita
+            Todo lo que nadie te explica, ahora en español y paso a paso
           </h2>
-          <p className="font-body text-opaque text-base leading-6 max-w-lg mx-auto pt-1">
-            Más de 40 páginas de contenido práctico, escrito por nuestro equipo de asesores
-            con +15 años acompañando familias en su decisión más importante
+          <p className="font-body text-navy/60 text-base leading-relaxed max-w-2xl mx-auto">
+            Adriana Meléndez preparó esta guía basada en años acompañando a familias hispanas en
+            Hampton Roads — incluyendo familias que compraron con ITIN, familias militares y
+            compradores primerizos que pensaban que comprar no era para ellos.
           </p>
         </div>
 
