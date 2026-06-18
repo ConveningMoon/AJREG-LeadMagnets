@@ -5,7 +5,9 @@ import { LM_REGISTRY }  from '@/lib/lm-registry'
 import { Hero }         from '@/components/pages/guia/sections/Hero'
 import { Benefits }     from '@/components/pages/guia/sections/Benefits'
 import { QuizSection }  from '@/components/pages/guia/sections/QuizSection'
+import { AgentIntro }  from '@/components/pages/guia/sections/AgentIntro'
 import { Testimonials } from '@/components/pages/guia/sections/Testimonials'
+import { CTAFinal }    from '@/components/pages/guia/sections/CTAFinal'
 import { Footer }       from '@/components/pages/guia/sections/Footer'
 
 const BASE_URL = process.env.NEXT_PUBLIC_ITMANO_BASE_URL ?? 'https://app.itmano.com'
@@ -61,7 +63,9 @@ export default async function LMPage({ params }: PageProps) {
         <Hero />
         <Benefits />
         <QuizSection channelPublicId={config.channelPublicId} intent={config.intent} />
+        <AgentIntro />
         <Testimonials />
+        <CTAFinal />
         <Footer />
       </main>
     </>
