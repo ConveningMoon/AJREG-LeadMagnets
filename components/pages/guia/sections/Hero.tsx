@@ -39,10 +39,8 @@ export function Hero() {
             {/* Title */}
             <div>
               <h1 className="font-heading font-bold text-white leading-[1.05]" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)' }}>
-                Tu Primera Casa en
-              </h1>
-              <h1 className="font-heading font-bold text-gold italic leading-[1.05]" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)' }}>
-                Estados Unidos
+                Tu Primera Casa en{' '}
+                <span className="text-gold italic">Estados Unidos</span>
               </h1>
             </div>
 
