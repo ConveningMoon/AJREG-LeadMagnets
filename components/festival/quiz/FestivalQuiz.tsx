@@ -37,7 +37,11 @@ export function FestivalQuiz({ channelPublicId }: { channelPublicId: string }) {
   function goBack()  { setDir(-1); setStep((s) => Math.max(0, s - 1)) }
 
   function selectAnswer(field: 'housing_topic' | 'timeline', value: string) {
-    setAnswers((prev) => ({ ...prev, [field]: value }))
+    setAnswers((prev) => {
+      const next = { ...prev, [field]: value }
+      if (field === 'housing_topic' && value === 'event_only') delete next.timeline
+      return next
+    })
     advance()
   }
 
