@@ -18,7 +18,7 @@ export function AgentIntro() {
 
           {/* Photo — fixed 45% column, fills full section height, anchored to bottom */}
           <div
-            className="relative w-full md:w-[45%] shrink-0 min-h-[420px]"
+            className="relative w-full mt-[20px] lg:mt-0 md:mt-0 md:w-[45%] md:mb-0 shrink-0 min-h-[420px]"
           >
             <Image
               src="/images/adriana_2b.webp"
@@ -30,7 +30,7 @@ export function AgentIntro() {
           </div>
 
           {/* Bio */}
-          <div className="flex-1 min-w-0 space-y-4 py-20 md:pl-12">
+          <div className="flex-1 min-w-0 space-y-4 pb-20 pt-10 md:pl-12">
             <div>
               <p className="font-body text-[11px] font-semibold tracking-[0.18em] uppercase text-opaque mb-1">
                 Quién preparó esta guía
@@ -44,7 +44,7 @@ export function AgentIntro() {
             </div>
 
             <p className="font-body text-navy/70 leading-relaxed">
-              Soy madre de tres hijos y llevo años acompañando a familias hispanas en Hampton Roads
+              Soy madre de tres hermosos hijos y llevo mas de 10 años acompañando a familias hispanas en Hampton Roads
               y North Carolina. Entiendo lo que buscas: un barrio seguro, escuelas buenas y un lugar
               donde tu familia eche raíces.
             </p>
