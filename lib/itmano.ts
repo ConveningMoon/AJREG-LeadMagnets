@@ -28,8 +28,6 @@ export async function submitLead(channelPublicId: string, payload: LeadPayload):
 
   const { website: _honeypot, ...cleanPayload } = payload
 
-  const baseUrl = process.env.NEXT_PUBLIC_ITMANO_BASE_URL ?? 'https://app.itmano.com'
-
   // Primary: use intake.js SDK (carries visitor_id + UTMs automatically)
   if (typeof window !== 'undefined' && window.itmano?.submit) {
     const raw = await window.itmano.submit(cleanPayload as Record<string, unknown>)
@@ -40,8 +38,9 @@ export async function submitLead(channelPublicId: string, payload: LeadPayload):
     return { status: 'created', channel_type: 'lead_magnet' }
   }
 
-  // Fallback: direct POST if intake.js hasn't initialized yet
-  const res = await fetch(`${baseUrl}/api/intake/${channelPublicId}/submit`, {
+  // Fallback: proxy through LP server to avoid browser CORS restrictions.
+  // The LP's /api/submit route forwards server-to-server to the CRM.
+  const res = await fetch(`/api/submit/${channelPublicId}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(cleanPayload),
