@@ -1,25 +1,37 @@
+'use client'
 import Image from 'next/image'
-import { SectionWrapper } from '@/components/ui/SectionWrapper'
+import { motion, useReducedMotion } from 'framer-motion'
 
 export function AgentIntro() {
-  return (
-    <div className="bg-cream/40">
-      <SectionWrapper>
-        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+  const pref = useReducedMotion()
 
-          {/* Photo */}
-          <div className="flex-none">
+  return (
+    <motion.section
+      className="overflow-hidden"
+      initial={pref ? {} : { opacity: 0, y: 20 }}
+      whileInView={pref ? {} : { opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="flex flex-col md:flex-row items-end gap-10 md:gap-8">
+
+          {/* Photo — full image, not cropped, anchored to bottom, expands with section */}
+          <div
+            className="relative w-full md:flex-1 self-end"
+            style={{ minHeight: '420px' }}
+          >
             <Image
-              src="/images/adriana.webp"
+              src="/images/adriana_2.webp"
               alt="Adriana Meléndez — Asesora de bienes raíces bilingüe, A&J Real Estate Group"
-              width={200}
-              height={200}
-              className="rounded-full shadow-card object-cover w-[200px] h-[200px]"
+              fill
+              className="object-contain object-bottom"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
 
           {/* Bio */}
-          <div className="space-y-4 max-w-xl">
+          <div className="space-y-4 max-w-xl pb-20">
             <div>
               <p className="font-body text-[11px] font-semibold tracking-[0.18em] uppercase text-opaque mb-1">
                 Quién preparó esta guía
@@ -76,7 +88,7 @@ export function AgentIntro() {
             </div>
           </div>
         </div>
-      </SectionWrapper>
-    </div>
+      </div>
+    </motion.section>
   )
 }
