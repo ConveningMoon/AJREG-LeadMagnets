@@ -1,27 +1,27 @@
-import { notFound }     from 'next/navigation'
+import { notFound }      from 'next/navigation'
 import type { Metadata } from 'next'
-import Script            from 'next/script'
-import { LM_REGISTRY }  from '@/lib/lm-registry'
-import { Hero }         from '@/components/pages/guia/sections/Hero'
-import { Benefits }     from '@/components/pages/guia/sections/Benefits'
-import { QuizSection }  from '@/components/pages/guia/sections/QuizSection'
-import { AgentIntro }  from '@/components/pages/guia/sections/AgentIntro'
-import { Testimonials } from '@/components/pages/guia/sections/Testimonials'
-import { Footer }       from '@/components/pages/guia/sections/Footer'
+import Script             from 'next/script'
+import { getLMContent, allLMSlugs } from '@/lib/lm-content'
+import { Hero }          from '@/components/template/sections/Hero'
+import { Benefits }      from '@/components/template/sections/Benefits'
+import { QuizSection }   from '@/components/template/sections/QuizSection'
+import { AgentIntro }    from '@/components/template/sections/AgentIntro'
+import { Testimonials }  from '@/components/template/sections/Testimonials'
+import { Footer }        from '@/components/template/sections/Footer'
 
 const BASE_URL = process.env.NEXT_PUBLIC_ITMANO_BASE_URL ?? 'https://app.itmano.com'
 
 type PageProps = { params: Promise<{ slug: string }> }
 
 export function generateStaticParams() {
-  return Object.keys(LM_REGISTRY).map((slug) => ({ slug }))
+  return allLMSlugs().map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const config = LM_REGISTRY[slug]
-  if (!config) return {}
-  const { meta } = config
+  const content  = getLMContent(slug)
+  if (!content) return {}
+  const { meta } = content
   return {
     title:       meta.title,
     description: meta.description,
@@ -47,21 +47,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function LMPage({ params }: PageProps) {
-  const { slug } = await params
-  const config = LM_REGISTRY[slug]
-  if (!config) notFound()
+  const { slug }  = await params
+  const content   = getLMContent(slug)
+  if (!content) notFound()
 
   return (
     <>
       <Script
         src={`${BASE_URL}/intake.js`}
-        data-channel={config.channelPublicId}
+        data-channel={content.channelPublicId}
         strategy="afterInteractive"
       />
       <main>
         <Hero />
         <Benefits />
-        <QuizSection channelPublicId={config.channelPublicId} intent={config.intent} />
+        <QuizSection channelPublicId={content.channelPublicId} intent={content.intent} />
         <AgentIntro />
         <Testimonials />
         <Footer />
