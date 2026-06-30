@@ -61,7 +61,12 @@ export default async function LMPage({ params }: PageProps) {
       <main>
         <Hero {...content.hero} />
         <Benefits {...content.benefits} />
-        <QuizSection channelPublicId={content.channelPublicId} intent={content.intent} />
+        <QuizSection
+          {...content.quizSection}
+          channelPublicId={content.channelPublicId}
+          intent={content.intent}
+          quizSuccess={content.quizSuccess}
+        />
         <AgentIntro />
         <Testimonials />
         <Footer />
