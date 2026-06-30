@@ -15,6 +15,7 @@ export function QuizSuccess({
   createdWhatsappLabel,
   alreadyHeading,
   alreadyBody,
+  alreadyPhoneIntro,
   alreadyPhone,
   alreadyPhoneLabel,
 }: QuizSuccessProps) {
@@ -25,7 +26,7 @@ export function QuizSuccess({
         <h3 className="font-heading text-2xl font-semibold text-navy">{alreadyHeading}</h3>
         <p className="font-body text-navy/70 max-w-sm mx-auto leading-relaxed">{alreadyBody}</p>
         <p className="font-body text-sm text-navy/50">
-          ¿Necesitas ayuda? Llámanos al{' '}
+          {alreadyPhoneIntro}{' '}
           <a href={`tel:${alreadyPhone}`} className="text-gold underline hover:text-navy transition-colors">
             {alreadyPhoneLabel}
           </a>

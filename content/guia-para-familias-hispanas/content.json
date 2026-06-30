@@ -37,7 +37,8 @@
     "images": {
       "background": "/images/LM_Adriana_Hero_Background.webp",
       "portrait": "/images/adriana.webp",
-      "guideCover": "/images/guide-cover.webp"
+      "guideCover": "/images/guide-cover.webp",
+      "guideCoverAlt": "Guía del Comprador Hispano — portada"
     }
   },
 
@@ -161,6 +162,7 @@
     "createdWhatsappLabel": "(407) 715-9052",
     "alreadyHeading":      "Ya te enviamos el material",
     "alreadyBody":         "Revisamos nuestros registros y ya te enviamos la guía a este correo. Si no la encuentras, revisa tu carpeta de spam o correo no deseado.",
+    "alreadyPhoneIntro":   "¿Necesitas ayuda? Llámanos al",
     "alreadyPhone":        "+14077159052",
     "alreadyPhoneLabel":   "(407) 715-9052"
   }

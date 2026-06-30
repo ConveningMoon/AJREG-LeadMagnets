@@ -36,9 +36,10 @@ export interface LMContent {
     ctaText:     string
     microcopy:   string
     images: {
-      background: string
-      portrait:   string
-      guideCover: string
+      background:    string
+      portrait:      string
+      guideCover:    string
+      guideCoverAlt: string
     }
   }
 
@@ -102,6 +103,7 @@ export interface LMContent {
     createdWhatsappLabel: string
     alreadyHeading:      string
     alreadyBody:         string
+    alreadyPhoneIntro:   string
     alreadyPhone:        string
     alreadyPhoneLabel:   string
   }
@@ -137,6 +139,9 @@ function validateLMContent(c: LMContent): void {
     if (!(card.icon in BENEFIT_ICONS))
       throw new Error(`LMContent inválido en "${c.slug}": benefits.cards[${i}].icon "${card.icon}" no está en BENEFIT_ICONS`)
   }
+
+  if (c.agentIntro.paragraphs.length === 0)
+    throw new Error(`LMContent inválido en "${c.slug}": agentIntro.paragraphs no puede estar vacío`)
 
   if (c.testimonials.items.length === 0)
     throw new Error(`LMContent inválido en "${c.slug}": testimonials.items no puede estar vacío`)

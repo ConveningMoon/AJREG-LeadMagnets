@@ -106,7 +106,7 @@ export function Hero({ badge, titleLine1, titleLine2, subheadline, bullets, ctaT
                 >
                   <Image
                     src={images.guideCover}
-                    alt="Guía del Comprador Hispano — portada"
+                    alt={images.guideCoverAlt}
                     width={300}
                     height={390}
                     priority
