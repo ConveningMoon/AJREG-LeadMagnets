@@ -7,6 +7,7 @@ import { Benefits }      from '@/components/template/sections/Benefits'
 import { QuizSection }   from '@/components/template/sections/QuizSection'
 import { AgentIntro }    from '@/components/template/sections/AgentIntro'
 import { Testimonials }  from '@/components/template/sections/Testimonials'
+import { CTAFinal }      from '@/components/template/sections/CTAFinal'
 import { Footer }        from '@/components/template/sections/Footer'
 
 const BASE_URL = process.env.NEXT_PUBLIC_ITMANO_BASE_URL ?? 'https://app.itmano.com'
@@ -69,7 +70,8 @@ export default async function LMPage({ params }: PageProps) {
         />
         <AgentIntro {...content.agentIntro} />
         <Testimonials {...content.testimonials} />
-        <Footer />
+        <CTAFinal {...content.ctaFinal} />
+        <Footer {...content.footer} />
       </main>
     </>
   )
