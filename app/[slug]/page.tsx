@@ -59,7 +59,7 @@ export default async function LMPage({ params }: PageProps) {
         strategy="afterInteractive"
       />
       <main>
-        <Hero />
+        <Hero {...content.hero} />
         <Benefits />
         <QuizSection channelPublicId={content.channelPublicId} intent={content.intent} />
         <AgentIntro />
