@@ -1,14 +1,15 @@
 'use client'
 import { useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { QuizProgress }     from './QuizProgress'
-import { QuizOption }       from './QuizOption'
-import { QuizContactForm }  from './QuizContactForm'
-import { QuizSuccess }      from './QuizSuccess'
-import { QuizError }        from './QuizError'
+import { QuizProgress }    from './QuizProgress'
+import { QuizOption }      from './QuizOption'
+import { QuizContactForm } from './QuizContactForm'
+import { QuizSuccess }     from './QuizSuccess'
+import { QuizError }       from './QuizError'
 import { QUIZ_QUESTIONS, buildFormAnswers, type QuizAnswers } from '@/lib/quiz-data'
-import { submitLead, type ContactData, type SubmitResult }     from '@/lib/itmano'
+import { submitLead, type ContactData, type SubmitResult }    from '@/lib/itmano'
 import type { FormIntent } from '@/lib/form-contracts'
+import type { LMContent }  from '@/lib/lm-content'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -26,12 +27,14 @@ const emptyContact: ContactData & { website: string } = {
 interface QuizProps {
   channelPublicId: string
   intent:          FormIntent
+  contactHeading:  string
+  quizSuccess:     LMContent['quizSuccess']
 }
 
-export function Quiz({ channelPublicId, intent }: QuizProps) {
-  const pref      = useReducedMotion()
-  const [step,    setStep]    = useState(0)
-  const [dir,     setDir]     = useState<1 | -1>(1)
+export function Quiz({ channelPublicId, intent, contactHeading, quizSuccess }: QuizProps) {
+  const pref = useReducedMotion()
+  const [step,         setStep]         = useState(0)
+  const [dir,          setDir]          = useState<1 | -1>(1)
   const [answers,      setAnswers]      = useState<QuizAnswers>({})
   const [contact,      setContact]      = useState({ ...emptyContact })
   const [status,       setStatus]       = useState<Status>('idle')
@@ -40,15 +43,8 @@ export function Quiz({ channelPublicId, intent }: QuizProps) {
   const currentQuestion = QUIZ_QUESTIONS[step]
   const isContactStep   = step === QUIZ_QUESTIONS.length
 
-  function advance() {
-    setDir(1)
-    setStep((s) => s + 1)
-  }
-
-  function goBack() {
-    setDir(-1)
-    setStep((s) => Math.max(0, s - 1))
-  }
+  function advance() { setDir(1);  setStep((s) => s + 1) }
+  function goBack()  { setDir(-1); setStep((s) => Math.max(0, s - 1)) }
 
   function selectAnswer(field: string, value: string) {
     setAnswers((prev) => ({ ...prev, [field]: value }))
@@ -62,7 +58,11 @@ export function Quiz({ channelPublicId, intent }: QuizProps) {
   async function handleSubmit() {
     setStatus('submitting')
     try {
-      const result = await submitLead(channelPublicId, { ...contact, intent, form_answers: buildFormAnswers(QUIZ_QUESTIONS, answers) })
+      const result = await submitLead(channelPublicId, {
+        ...contact,
+        intent,
+        form_answers: buildFormAnswers(QUIZ_QUESTIONS, answers),
+      })
       setSubmitResult(result)
       setStatus('success')
     } catch {
@@ -70,10 +70,10 @@ export function Quiz({ channelPublicId, intent }: QuizProps) {
     }
   }
 
-  // LM form: show duplicate message when already_submitted.
-  // Future event forms: pass alreadySubmitted={false} always to ignore status.
-  if (status === 'success') return <QuizSuccess alreadySubmitted={submitResult?.status === 'already_submitted'} />
-  if (status === 'error')   return <QuizError onRetry={() => setStatus('idle')} />
+  if (status === 'success')
+    return <QuizSuccess {...quizSuccess} alreadySubmitted={submitResult?.status === 'already_submitted'} />
+  if (status === 'error')
+    return <QuizError onRetry={() => setStatus('idle')} />
 
   const variants = {
     enter:  (d: number) => ({ x: pref ? 0 : d * 40,  opacity: 0 }),
@@ -101,7 +101,7 @@ export function Quiz({ channelPublicId, intent }: QuizProps) {
                 className="font-heading font-bold text-navy mb-6"
                 style={{ fontSize: '1.9rem', lineHeight: '1.1' }}
               >
-                ¿A dónde enviamos tu guía?
+                {contactHeading}
               </h3>
               <QuizContactForm
                 data={contact}
