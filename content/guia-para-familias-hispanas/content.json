@@ -1,0 +1,167 @@
+{
+  "slug": "guia-para-familias-hispanas",
+  "channelPublicId": "REPLACE_WITH_CHANNEL_ID",
+  "intent": "compra",
+
+  "meta": {
+    "title": "Tu Primera Casa en Estados Unidos — Guía Gratuita para Familias Hispanas | Hampton Roads, VA",
+    "description": "Descarga gratis la guía completa en español para comprar tu primera casa en Hampton Roads, Virginia. Préstamos ITIN, programas de ayuda de Virginia Housing y el proceso paso a paso. Preparada por Adriana Meléndez, A&J Real Estate Group.",
+    "keywords": [
+      "comprar casa Hampton Roads",
+      "primera casa Virginia",
+      "préstamo ITIN Virginia",
+      "guía comprador hispano",
+      "bienes raíces Virginia español",
+      "comprar casa sin seguro social",
+      "Virginia Beach",
+      "Chesapeake",
+      "Suffolk"
+    ],
+    "ogImage": "/images/og-image.jpg",
+    "locale": "es_US"
+  },
+
+  "hero": {
+    "badge": "Guía gratuita · Hampton Roads, Virginia",
+    "titleLine1": "Tu Primera Casa en",
+    "titleLine2": "Estados Unidos",
+    "subheadline": "Si llegaste a este país con el sueño de darle algo mejor a tu familia, esta guía es para ti. El proceso completo, en español, sin letras chiquitas y sin sorpresas.",
+    "bullets": [
+      "Cómo comprar aunque no tengas número de seguro social (préstamos ITIN)",
+      "Programas de Virginia que cubren parte del enganche — dinero que no se devuelve",
+      "Qué zonas de Hampton Roads son mejores para tu familia según escuelas y seguridad",
+      "Cómo protegerte de las trampas que afectan a nuestra comunidad"
+    ],
+    "ctaText": "Quiero mi guía gratis →",
+    "microcopy": "100% gratis · En español · Sin compromiso",
+    "images": {
+      "background": "/images/LM_Adriana_Hero_Background.webp",
+      "portrait": "/images/adriana.webp",
+      "guideCover": "/images/guide-cover.webp"
+    }
+  },
+
+  "benefits": {
+    "label": "Lo que contiene esta guía",
+    "title": "Todo lo que nadie te explica, ahora en español y paso a paso",
+    "subtitle": "Adriana Meléndez preparó esta guía basada en años acompañando a familias hispanas en Hampton Roads — incluyendo familias que compraron con ITIN, familias militares y compradores primerizos que pensaban que comprar no era para ellos.",
+    "cards": [
+      {
+        "icon": "Calculator",
+        "title": "¿Cuánto puedes pagar de verdad?",
+        "desc": "Entiende el pago mensual real — con impuestos, seguro y todos los gastos — antes de enamorarte de una propiedad."
+      },
+      {
+        "icon": "CreditCard",
+        "title": "Comprar sin número de seguro social",
+        "desc": "Sí, es posible y es legal. Cómo funcionan los préstamos ITIN en Virginia y qué documentos necesitas."
+      },
+      {
+        "icon": "Gift",
+        "title": "Programas de ayuda en Virginia",
+        "desc": "Virginia Housing tiene hasta ~$10,000 en ayuda para el enganche que no tienes que devolver. Te explicamos cómo calificar."
+      },
+      {
+        "icon": "MapPin",
+        "title": "Las zonas ideales en Hampton Roads",
+        "desc": "Virginia Beach, Chesapeake, Suffolk, Norfolk y más — cuál encaja mejor con tu familia según escuelas, precio y comunidad."
+      },
+      {
+        "icon": "ClipboardList",
+        "title": "El proceso completo, paso a paso",
+        "desc": "Desde la pre-aprobación hasta el día que recibes las llaves, sin sorpresas en ninguna etapa."
+      },
+      {
+        "icon": "Shield",
+        "title": "Protégete de las trampas",
+        "desc": "Las estafas más comunes contra familias hispanas en el proceso de compra — y cómo identificarlas a tiempo."
+      }
+    ]
+  },
+
+  "quizSection": {
+    "label": "Descarga tu guía gratis",
+    "title": "Cuéntanos un poco sobre ti y recibe la guía ahora",
+    "subtitle": "Toma menos de 2 minutos. Te enviamos la guía de inmediato y, si tienes preguntas, Adriana puede acompañarte en español sin ningún compromiso.",
+    "contactHeading": "¿A dónde enviamos tu guía?"
+  },
+
+  "agentIntro": {
+    "label": "Quién preparó esta guía",
+    "name": "Adriana Meléndez",
+    "title": "Asesora de bienes raíces bilingüe · A&J Real Estate Group",
+    "paragraphs": [
+      "Soy madre de tres hermosos hijos y llevo mas de 10 años acompañando a familias hispanas en Hampton Roads y North Carolina. Entiendo lo que buscas: un barrio seguro, escuelas buenas y un lugar donde tu familia eche raíces.",
+      "He trabajado con primerizos con presupuesto ajustado, militares en plena mudanza y familias que pensaban que comprar no era para ellos — incluyendo familias que compraron con ITIN. Te explico todo en español, sin prisa y sin presión."
+    ],
+    "quote": "Comprar casa cambió la vida de mi familia. Mi misión es que cambie la tuya — con honestidad, paciencia y en tu idioma.",
+    "photo": "/images/adriana_2b.webp",
+    "whatsappUrl": "https://wa.me/14077159052",
+    "instagramUrl": "https://instagram.com/adrysofi_realestate",
+    "instagramHandle": "@adrysofi_realestate"
+  },
+
+  "testimonials": {
+    "label": "Familias que ya tienen sus llaves",
+    "title": "Ellos también pensaban que comprar era complicado",
+    "items": [
+      {
+        "image": "/testimonials/T_1.webp",
+        "name": "Maduro Family",
+        "location": "Virginia Beach · Casa unifamiliar",
+        "quote": "Teníamos miedo de que nuestro presupuesto no alcanzara. Adriana nos explicó los programas de ayuda de Virginia y encontramos dinero para el enganche que ni sabíamos que existía. En menos de dos meses, nuestros hijos ya tenían su cuarto."
+      },
+      {
+        "image": "/testimonials/T_2.webp",
+        "name": "Flores Family",
+        "location": "North Carolina · Townhouse",
+        "quote": "Lo que más nos importaba era el barrio y las escuelas. Adriana conoce Hampton Roads como nadie — nos mostró exactamente dónde buscar y por qué. Encontramos la casa con patio que queríamos, en la zona perfecta."
+      },
+      {
+        "image": "/testimonials/T_3.webp",
+        "name": "Roberto M.",
+        "location": "Virginia Beach · Townhouse",
+        "quote": "Como militar, mis horarios cambian constantemente. Adriana se movió a mi ritmo, me explicó el préstamo VA paso a paso y manejó todo. Cerré sin estrés y sin sorpresas."
+      }
+    ]
+  },
+
+  "ctaFinal": {
+    "title": "Esta guía es tuya, gratis, hoy.",
+    "paragraph": "No importa si estás apenas explorando o listo para empezar. La guía es el primer paso — y el siguiente lo das tú.",
+    "ctaText": "Quiero mi guía gratuita →",
+    "whatsappUrl": "https://wa.me/14077159052?text=Hola%20Adriana%2C%20vi%20tu%20gu%C3%ADa%20y%20me%20gustar%C3%ADa%20saber%20m%C3%A1s",
+    "whatsappLinkText": "O escríbele directamente a Adriana por WhatsApp →"
+  },
+
+  "footer": {
+    "logo": "/images/logo-white_2.webp",
+    "nav": [
+      { "label": "Home",    "href": "https://ajrealestateva.com" },
+      { "label": "Houses",  "href": "https://ajrealestateva.com/houses" },
+      { "label": "Contact", "href": "https://ajrealestateva.com/contact" }
+    ],
+    "social": [
+      { "type": "instagram", "href": "https://instagram.com/adrysofi_realestate" },
+      { "type": "facebook",  "href": "https://facebook.com/ajrealestateva" },
+      { "type": "whatsapp",  "href": "https://wa.me/14077159052" }
+    ],
+    "contact": {
+      "phone":     "(407) 715-9052",
+      "phoneHref": "tel:+14077159052",
+      "email":     "adrysofirealestate@gmail.com"
+    },
+    "legalLine": "© 2026 A&J Real Estate · Diseñado por ITMANO"
+  },
+
+  "quizSuccess": {
+    "createdHeading":      "¡Listo! Tu guía está en camino.",
+    "createdBody":         "Si prefieres hablar directamente, escríbele a Adriana por WhatsApp al",
+    "createdWhatsappUrl":  "https://wa.me/14077159052",
+    "createdWhatsappLabel": "(407) 715-9052",
+    "alreadyHeading":      "Ya te enviamos el material",
+    "alreadyBody":         "Revisamos nuestros registros y ya te enviamos la guía a este correo. Si no la encuentras, revisa tu carpeta de spam o correo no deseado.",
+    "alreadyPhone":        "+14077159052",
+    "alreadyPhoneLabel":   "(407) 715-9052"
+  }
+}
