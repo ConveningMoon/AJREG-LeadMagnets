@@ -67,8 +67,8 @@ export default async function LMPage({ params }: PageProps) {
           intent={content.intent}
           quizSuccess={content.quizSuccess}
         />
-        <AgentIntro />
-        <Testimonials />
+        <AgentIntro {...content.agentIntro} />
+        <Testimonials {...content.testimonials} />
         <Footer />
       </main>
     </>
